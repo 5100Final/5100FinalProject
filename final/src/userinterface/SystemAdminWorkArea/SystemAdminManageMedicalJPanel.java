@@ -61,7 +61,7 @@ public class SystemAdminManageMedicalJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblMedical);
 
-        lblTitle.setText("Medical");
+        lblTitle.setText("Medical,public,tax,util/customer");
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {

@@ -26,8 +26,6 @@ import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import userinterface.CustomerRole.CustomerPayBillJPanel;
 import userinterface.MedicalRole.MedicalRoleWorkAreaJPanel;
-import userinterface.UtilityRole.AdminWorkAreaJPanel;
-import static userinterface.UtilityRole.MenuManage.infoBox;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**

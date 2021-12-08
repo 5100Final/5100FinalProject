@@ -14,9 +14,6 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
-import userinterface.UtilityRole.AdminWorkAreaJPanel;
-import static userinterface.UtilityRole.OrderManage.infoBox;
-
 /**
  *
  * @author raunak
