@@ -180,6 +180,8 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
         
         if( orderService.modifyById(order)>0){
               infoBox("Modify order success!!", "Valid");
+              infoBox("Modify order success!!", "Valid");infoBox("Modify order success!!", "Valid");infoBox("Modify order success!!", "Valid");
+              infoBox("Modify order success!!", "Valid");
         }else{
               infoBox("Modify order fail!!", "invalid");
         }
