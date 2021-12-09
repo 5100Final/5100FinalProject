@@ -9,16 +9,18 @@ import Business.model.user.User;
 import Business.service.OrderService;
 import Business.service.UserService;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
+import static userinterface.MainJFrame.infoBox;
 
 /**
  *
  * @author Frank
  */
 public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
- UserService us;
+ 
     
     private JSplitPane splitPanel;
     private OrderService orderService;
@@ -28,7 +30,7 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
      */
     public SystemAdminManageBillJPanel(JSplitPane splitPanel, User user) {
         initComponents();
-         this.us = new UserService();
+         
         this.splitPanel = splitPanel;
         this.user = user;
         this.orderService = new OrderService();
@@ -53,6 +55,11 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
 
         btnChange.setText("Change");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
 
         btnNew.setText("New");
 
@@ -75,7 +82,7 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, false
+                false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -146,6 +153,39 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
           SystemAdminWorkAreaJPanel sa = new SystemAdminWorkAreaJPanel(splitPanel,user);
           splitPanel.setRightComponent(sa);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+        
+         int selectedRow = tblBill.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+         Date ddl = null;
+        try{
+          SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
+          ddl =  sdf.parse((String)tblBill.getValueAt(selectedRow, 5)); 
+        }catch(Exception e){
+            infoBox("Date format wrong!!", "Valid");
+            return;
+        }
+        Order order = new Order();
+        order.setId((Integer)tblBill.getValueAt(selectedRow, 0));
+        order.setCompanyId((String)tblBill.getValueAt(selectedRow, 1)); 
+        order.setUserId((String)tblBill.getValueAt(selectedRow, 2)); 
+        order.setFee((Integer)tblBill.getValueAt(selectedRow, 3));
+        order.setStatus((String)tblBill.getValueAt(selectedRow, 4));   
+        order.setDdl(ddl);
+        
+        if( orderService.modifyById(order)>0){
+              infoBox("Modify order success!!", "Valid");
+        }else{
+              infoBox("Modify order fail!!", "invalid");
+        }
+       
+        populateTable( orderService.getAllList());
+    }//GEN-LAST:event_btnChangeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

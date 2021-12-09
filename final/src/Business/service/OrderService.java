@@ -28,4 +28,8 @@ public class OrderService {
     public List<Order> getAllList() {
         return orderDao.getAll();
     }
+
+    public int modifyById(Order order) {
+      return  orderDao.modifyById(order);
+    }
 }

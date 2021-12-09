@@ -67,5 +67,20 @@ public class OrderDao {
                 return null;
     }
 
+    public int modifyById(Order order) {
+                 QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = "update orders set ddl = ?,company_id = ?,user_id = ?,fee = ?, status = ? where id = ? ";
+		Object[] params = {order.getDdl(),order.getCompanyId(),order.getUserId(),order.getFee(),order.getStatus(),order.getId()};      
+		try { 
+			return queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return 0;
+    }
+
    
 }
