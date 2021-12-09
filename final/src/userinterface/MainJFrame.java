@@ -24,10 +24,10 @@ import org.apache.commons.dbutils.RowProcessor;
 import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.BasicRowProcessor;
-import userinterface.CustomerRole.CustomerAreaJPanel;
-import userinterface.DeliveryManRole.DeliveryManWorkAreaJPanel;
-import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
-import static userinterface.RestaurantAdminRole.MenuManage.infoBox;
+import userinterface.CustomerRole.CustomerPayBillJPanel;
+import userinterface.MedicalRole.MedicalRoleWorkAreaJPanel;
+import userinterface.UtilityRole.AdminWorkAreaJPanel;
+import static userinterface.UtilityRole.MenuManage.infoBox;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -67,6 +67,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,6 +97,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnRegister.setText("Register");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,7 +115,8 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                             .addGap(26, 26, 26)
                             .addComponent(loginJLabel)))
-                    .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegister))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,7 +136,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginJLabel)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegister)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -325,6 +331,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegister;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
