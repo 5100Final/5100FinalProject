@@ -82,5 +82,20 @@ public class OrderDao {
                 return 0;
     }
 
+    public int deletedById(String id) {
+                QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = " delete from orders where id=?";
+		Object[] params = {id};      
+		try { 
+			return queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return 0;
+    }
+
    
 }

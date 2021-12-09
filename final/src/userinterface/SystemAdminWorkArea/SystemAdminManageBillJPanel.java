@@ -146,6 +146,22 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+         int selectedRow = tblBill.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        
+        Integer id = (Integer)tblBill.getValueAt(selectedRow, 0);
+        
+      
+         if( orderService.deletedById(id+"")>0){
+              infoBox("deleted order success!!", "Valid");
+        }else{
+              infoBox("deleted order fail!!", "invalid");
+        }
+         
+         populateTable(orderService.getAllList());
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
