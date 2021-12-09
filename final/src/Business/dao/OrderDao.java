@@ -25,9 +25,9 @@ public class OrderDao {
      Connection connection = DBUtil.getConn();
      
       public int addOrder(Order order) {
-		String sql = "insert into orders(ddl,fee,company_id,user_id) values(?,?,?,?)";
+		String sql = "insert into orders(ddl,fee,company_id,user_id,status) values(?,?,?,?,?)";
 		
-		Object[] params = {order.getDdl(),order.getFee(),order.getCompanyId(),order.getUserId()};
+		Object[] params = {order.getDdl(),order.getFee(),order.getCompanyId(),order.getUserId(),order.getStatus()};
 		
 		try { 
 			return queryRunner.update(connection, sql,params);
@@ -39,10 +39,24 @@ public class OrderDao {
     }
 
 
-    public List<Order> getListByCompanyId(int id) {
+    public List<Order> getListByCompanyId(String id) {
           	String sql = "select * from orders where company_id = ? ";
                 
 		Object[] params = {id};
+		try {
+			List<Order> orders = (List<Order>)queryRunner.query(connection, sql,new BeanListHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  orders == null ? null:orders;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
+    public List<Order> getAll() {
+              String sql = "select * from orders ";
+                
+		Object[] params = {};
 		try {
 			List<Order> orders = (List<Order>)queryRunner.query(connection, sql,new BeanListHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
                         return  orders == null ? null:orders;

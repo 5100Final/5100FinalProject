@@ -4,17 +4,35 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.model.order.Order;
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Frank
  */
 public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
-
+ UserService us;
+    
+    private JSplitPane splitPanel;
+    private OrderService orderService;
+    private User user;
     /**
      * Creates new form SystemAdminManageBillJPanel
      */
-    public SystemAdminManageBillJPanel() {
+    public SystemAdminManageBillJPanel(JSplitPane splitPanel, User user) {
         initComponents();
+         this.us = new UserService();
+        this.splitPanel = splitPanel;
+        this.user = user;
+        this.orderService = new OrderService();
+        preWork();
     }
 
     /**
@@ -30,7 +48,7 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
         btnNew = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMedical = new javax.swing.JTable();
+        tblBill = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
 
@@ -39,27 +57,32 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
         btnNew.setText("New");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        tblMedical.setModel(new javax.swing.table.DefaultTableModel(
+        tblBill.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Bill Number", "From", "To", "Total Amount", "Due Date"
+                "Bill Number", "From", "To", "Total Amount", "Status", "Due Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, true, true, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblMedical);
+        jScrollPane1.setViewportView(tblBill);
 
         lblTitle.setText("Bills");
 
@@ -78,19 +101,22 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnBack)
+                                        .addComponent(lblTitle))
+                                    .addGap(383, 383, 383))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnChange)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDelete))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnBack)
-                                .addComponent(lblTitle))))
+                                .addGap(425, 425, 425)
+                                .addComponent(btnDelete))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,13 +133,19 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
                     .addComponent(btnChange))
                 .addGap(18, 18, 18)
                 .addComponent(btnNew)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+          SystemAdminWorkAreaJPanel sa = new SystemAdminWorkAreaJPanel(splitPanel,user);
+          splitPanel.setRightComponent(sa);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -123,6 +155,28 @@ public class SystemAdminManageBillJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNew;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblMedical;
+    private javax.swing.JTable tblBill;
     // End of variables declaration//GEN-END:variables
+
+    private void preWork() {
+       populateTable( orderService.getAllList());
+    }
+   public void populateTable(List<Order> orders){
+        
+          DefaultTableModel orderModel = (DefaultTableModel) tblBill.getModel();
+     
+          orderModel.setRowCount(0);
+           SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
+         
+          for(Order order:orders){
+            Object[] row = new Object[6];
+            row[0] = order.getId();
+            row[1] = order.getCompanyId();
+            row[2] = order.getUserId();
+            row[3] = order.getFee();
+            row[4] = order.getStatus();
+            row[5] = sdf.format(order.getDdl());
+            orderModel.addRow(row);
+         }
+    }
 }

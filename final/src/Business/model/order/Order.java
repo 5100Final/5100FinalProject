@@ -17,7 +17,7 @@ public class Order {
     private Date ddl;
     private Integer id;
     private Integer fee;
-    private Integer companyId;
-    private Integer userId;
+    private String companyId;
+    private String userId;
     private String status;
 }

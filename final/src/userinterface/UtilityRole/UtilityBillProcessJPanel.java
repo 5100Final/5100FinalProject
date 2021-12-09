@@ -39,13 +39,14 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
         this.splitPanel = splitPanel;
         this.user = user;
         this.map = new HashMap<>();
-       cbxCustomer.addItem("");
+        cbxCustomer.addItem("");
         preWork();
         
         cbxCustomer.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {  
                  if (e.getStateChange() == ItemEvent.SELECTED) {
+                     cusName = (String)e.getItem();
                      cusId =  map.get(e.getItem());
                  }           
             }   
@@ -180,8 +181,8 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
             return;
         }
         order.setDdl(ddl);
-        order.setCompanyId(user.getId());
-        order.setUserId(cusId);
+        order.setCompanyId(user.getUsername());
+        order.setUserId(cusName);
         order.setFee(fee);
         order.setStatus("pending");
         if(os.addOrder(order)>0){

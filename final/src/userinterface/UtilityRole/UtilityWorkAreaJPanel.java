@@ -179,14 +179,12 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
     private void preWork(User user) {
         lblOrganization.setText(user.getType()+" Service");
         lblCompanyName.setText(user.getUsername());
-        List<Order> list  = orderService.getListById(user.getId());
+        List<Order> list  = orderService.getListById(user.getUsername());
         populateTable(list);
-        
     }
     
     public void populateTable(List<Order> orders){
         
- 
           DefaultTableModel orderModel = (DefaultTableModel) tblBill.getModel();
      
           orderModel.setRowCount(0);
@@ -194,7 +192,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
           for(Order order:orders){
             Object[] row = new Object[5];
             row[0] = order.getId();
-            row[1] = userService.getUserById(order.getUserId()).getUsername();
+            row[1] = order.getUserId();
             row[2] = order.getFee();
             row[3] = order.getStatus();
             row[4] = order.getDdl();

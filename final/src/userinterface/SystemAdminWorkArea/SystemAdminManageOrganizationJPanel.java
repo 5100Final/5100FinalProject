@@ -4,19 +4,34 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.model.order.Order;
+import Business.model.user.User;
+import Business.service.UserService;
+import java.util.List;
+import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
+import static userinterface.MainJFrame.infoBox;
+
 /**
  *
  * @author Frank
  */
 public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
     String type;
+    UserService us;
+    
+    private JSplitPane splitPanel;
+    
+    private User user;
     /**
      * Creates new form SystemAdminManageMedical
      */
-    public SystemAdminManageOrganizationJPanel(String type) {
+    public SystemAdminManageOrganizationJPanel(JSplitPane splitPanel, User user,String type) {
         initComponents();
         this.type = type;
-        
+        this.us = new UserService();
+        this.splitPanel = splitPanel;
+        this.user = user;
         preWork();
     }
 
@@ -33,17 +48,27 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
         btnNew = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMedical = new javax.swing.JTable();
+        tblUser = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
 
         btnChange.setText("Change");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
 
         btnNew.setText("New");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        tblMedical.setModel(new javax.swing.table.DefaultTableModel(
+        tblUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,14 +80,14 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblMedical);
+        jScrollPane1.setViewportView(tblUser);
 
         lblTitle.setText("Medical,public,tax,util/customer");
 
@@ -118,7 +143,50 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+         int selectedRow = tblUser.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        String name = (String)tblUser.getValueAt(selectedRow, 0);
+        
+      
+         if( us.deletedByName(name)>0){
+              infoBox("deleted user success!!", "Valid");
+        }else{
+              infoBox("deleted user fail!!", "invalid");
+        }
+         
+         populateTable(us.getListByType(type));
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        SystemAdminWorkAreaJPanel sa = new SystemAdminWorkAreaJPanel(splitPanel,user);
+        splitPanel.setRightComponent(sa);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblUser.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        User user = new User();
+        user.setUsername((String)tblUser.getValueAt(selectedRow, 0)); 
+        user.setType((String)tblUser.getValueAt(selectedRow, 1)); 
+        user.setRole((String)tblUser.getValueAt(selectedRow, 2));
+        user.setPassword((String)tblUser.getValueAt(selectedRow, 3));
+        
+        if( us.modifyUserByName(user)>0){
+              infoBox("Modify user success!!", "Valid");
+        }else{
+             infoBox("Modify user fail!!", "invalid");
+        }
+       
+        populateTable(us.getListByType(type));
+    }//GEN-LAST:event_btnChangeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -128,11 +196,29 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNew;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblMedical;
+    private javax.swing.JTable tblUser;
     // End of variables declaration//GEN-END:variables
 
     private void preWork() {
+        
        lblTitle.setText(this.type);
+       populateTable(us.getListByType(this.type));
        
+    }
+     public void populateTable(List<User> users){
+        
+          DefaultTableModel userModel = (DefaultTableModel) tblUser.getModel();
+     
+          userModel.setRowCount(0);
+
+          for(User user:users){
+            Object[] row = new Object[4];
+            row[0] = user.getUsername();
+            row[1] = user.getType();
+            row[2] = user.getRole();
+            row[3] = user.getPassword();
+
+            userModel.addRow(row);
+         }
     }
 }

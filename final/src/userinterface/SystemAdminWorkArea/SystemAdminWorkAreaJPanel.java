@@ -87,6 +87,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageBill.setText("Manage Bills");
+        btnManageBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageBillActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -123,7 +128,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(113, 113, 113)
                 .addComponent(lblTitle)
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblWelcom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValue))
                 .addGap(18, 18, 18)
@@ -144,7 +149,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicalActionPerformed
 //        // TODO add your handling code here:
-       SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Medical");
+       SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel(splitPanel,user,"Medical");
                 splitPanel.setRightComponent(sj);
 //        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, enterprise);
 //        userProcessContainer.add("ManageUserAccountJPanel", muajp);
@@ -154,7 +159,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMedicalActionPerformed
 
     private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
-         SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Tax");
+         SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel(splitPanel,user,"Tax");
                 splitPanel.setRightComponent(sj);
 //        ManageEmployeeJPanel manageEmployeeJPanel = new ManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
 //        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
@@ -165,7 +170,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTaxActionPerformed
 
     private void btnUtilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtilityActionPerformed
-                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Utility");
+                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel(splitPanel,user,"Utility");
                 splitPanel.setRightComponent(sj);
                 
 //        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
@@ -176,13 +181,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnPublicServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicServiceActionPerformed
         // TODO add your handling code here:
-                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Public");
+                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel(splitPanel,user,"Public");
                 splitPanel.setRightComponent(sj);
     }//GEN-LAST:event_btnPublicServiceActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
         // TODO add your handling code here:
+                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel(splitPanel,user,"Customer");
+                splitPanel.setRightComponent(sj);
     }//GEN-LAST:event_btnCustomerActionPerformed
+
+    private void btnManageBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBillActionPerformed
+        // TODO add your handling code here:
+        SystemAdminManageBillJPanel sp = new SystemAdminManageBillJPanel(splitPanel,user);
+        splitPanel.setRightComponent(sp);
+    }//GEN-LAST:event_btnManageBillActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

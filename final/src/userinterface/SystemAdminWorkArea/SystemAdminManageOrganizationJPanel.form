@@ -71,6 +71,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Change"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChangeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNew">
       <Properties>
@@ -81,6 +84,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;&lt;Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -89,14 +95,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblMedical">
+        <Component class="javax.swing.JTable" name="tblUser">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="UserName" type="java.lang.Object"/>
                 <Column editable="true" title="Type" type="java.lang.Object"/>
                 <Column editable="true" title="Role" type="java.lang.Object"/>
-                <Column editable="false" title="Password" type="java.lang.Object"/>
+                <Column editable="true" title="Password" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

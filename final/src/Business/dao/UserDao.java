@@ -69,7 +69,7 @@ public class UserDao {
              
                 return null;
     }
-        public int modifyUser(User user) {
+    public int modifyUser(User user) {
            	
 		 QueryRunner queryRunner = new QueryRunner();
 		Connection connection = DBUtil.getConn();
@@ -84,7 +84,21 @@ public class UserDao {
 		} 
                 return 0;
     }
-
+ public int modifyUserByName(User user) {
+           	
+		 QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = "update user set password = ?,type = ?,role = ? where username = ? ";
+		Object[] params = {user.getPassword(),user.getType(),user.getRole(),user.getUsername(),};      
+		try { 
+			return queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return 0;
+    }
     public User findUserByName(String name) {
                 String sql = "select * from user where username = ? ";
 		Object[] params = {name};
@@ -135,5 +149,34 @@ public class UserDao {
 			e.printStackTrace();
 		} 
                 return null;
+    }
+
+    public List<User> getList() {
+                 String sql = "select * from user";
+		Object[] params = {};
+		try {
+			List<User> users = (List<User>)queryRunner.query(connection, sql,new BeanListHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  users == null ? null:users;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
+    public int deletedByName(String name) {
+      
+                QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = " delete from user where username=?";
+		Object[] params = {name};      
+		try { 
+			return queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return 0;
     }
 }

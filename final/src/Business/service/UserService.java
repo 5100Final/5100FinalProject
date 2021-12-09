@@ -36,7 +36,9 @@ public class UserService {
     public int modifyUser(User user){
        return  userDao.modifyUser(user);
     }
-
+   public int modifyUserByName(User user){
+       return  userDao.modifyUserByName(user);
+    }
     public List<User> getCustomerList() {
         return userDao.getListByType("Customer");
     }
@@ -47,5 +49,17 @@ public class UserService {
 
     public User getUserById(Integer userId) {
        return userDao.getUserById(userId);
+    }
+
+    public List<User> getList() {
+         return userDao.getList();
+    }
+
+    public List<User> getListByType(String type) {
+       return userDao.getListByType(type);
+    }
+
+    public int deletedByName(String name) {
+        return userDao.deletedByName(name);
     }
 }
