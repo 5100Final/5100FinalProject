@@ -18,4 +18,5 @@ public class User {
    private String location;        
    private String password;
    private Integer companyId;
+   private String role;
 }

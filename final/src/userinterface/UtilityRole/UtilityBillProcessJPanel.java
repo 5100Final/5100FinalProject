@@ -4,19 +4,63 @@
  */
 package userinterface.UtilityRole;
 
+import Business.model.order.Order;
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JSplitPane;
+import static userinterface.MainJFrame.infoBox;
+
 /**
  *
  * @author Frank
  */
 public class UtilityBillProcessJPanel extends javax.swing.JPanel {
-
+    private JSplitPane splitPanel;
+    
+    private User user;
+    private String cusName;
+    private int cusId;
+    private Map<String,Integer> map;
+     OrderService os = new OrderService();
+     UserService us = new UserService();
     /**
      * Creates new form UtilityBillProcessJPanel
      */
-    public UtilityBillProcessJPanel() {
+    public UtilityBillProcessJPanel(JSplitPane splitPanel,User user) {
         initComponents();
+        this.splitPanel = splitPanel;
+        this.user = user;
+        this.map = new HashMap<>();
+       cbxCustomer.addItem("");
+        preWork();
+        
+        cbxCustomer.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {  
+                 if (e.getStateChange() == ItemEvent.SELECTED) {
+                     cusId =  map.get(e.getItem());
+                 }           
+            }   
+       });  
     }
-
+    
+     private void preWork() {
+        UserService us = new UserService();
+        List<User> list = us.getCustomerList();
+        System.out.print(list.size());
+        for(User user:list){
+         cbxCustomer.addItem(user.getUsername());
+         map.put(user.getUsername(),user.getId());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,10 +79,16 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
         cbxCustomer = new javax.swing.JComboBox<>();
         lblTotalAmount = new javax.swing.JLabel();
         txtTotalAmount = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         lblDueTime.setText("Due Time:");
 
         btnCreateBill.setText("Create Bill");
+        btnCreateBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateBillActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -52,9 +102,9 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
 
         lblCustomer.setText("Customer:");
 
-        cbxCustomer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lblTotalAmount.setText("Total Amount:");
+
+        jLabel1.setText("ex:08/09/2021");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -65,20 +115,23 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitle)
                     .addComponent(btnBack)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnCreateBill)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDueTime)
-                                    .addComponent(lblTotalAmount))
-                                .addComponent(lblCustomer, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbxCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                .addComponent(txtDueTime)))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCreateBill)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblDueTime)
+                                        .addComponent(lblTotalAmount))
+                                    .addComponent(lblCustomer, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbxCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                    .addComponent(txtDueTime))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,22 +151,50 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDueTime)
-                    .addComponent(txtDueTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDueTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateBill)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        UtilityWorkAreaJPanel uw = new UtilityWorkAreaJPanel(splitPanel,user);
+        splitPanel.setRightComponent(uw);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnCreateBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBillActionPerformed
+        // TODO add your handling code here:
+        
+        int fee = Integer.valueOf(txtTotalAmount.getText());
+        
+        Order order = new Order();
+        Date ddl = null;
+        try{
+          SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
+          ddl =  sdf.parse(txtDueTime.getText()); 
+        }catch(Exception e){
+            infoBox("Date format wrong!!", "Valid");
+            return;
+        }
+        order.setDdl(ddl);
+        order.setCompanyId(user.getId());
+        order.setUserId(cusId);
+        order.setFee(fee);
+        order.setStatus("pending");
+        if(os.addOrder(order)>0){
+            infoBox("Create bill success!!", "Valid");
+        };       
+    }//GEN-LAST:event_btnCreateBillActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateBill;
     private javax.swing.JComboBox<String> cbxCustomer;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCustomer;
     private javax.swing.JLabel lblDueTime;
     private javax.swing.JLabel lblTitle;
@@ -121,4 +202,6 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDueTime;
     private javax.swing.JTextField txtTotalAmount;
     // End of variables declaration//GEN-END:variables
+
+   
 }

@@ -6,6 +6,7 @@ package Business.service;
 
 import Business.dao.UserDao;
 import Business.model.user.User;
+import java.util.List;
 
 /**
  *
@@ -15,12 +16,16 @@ public class UserService {
     
     UserDao userDao = new UserDao();
     
-    public void addUser(User user){
+    public boolean addUser(User user){
+            if(!userDao.CheckName(user.getUsername())) return false;
+           
             userDao.addUser(user);
+            
+            return true;
     }
     
     
-    public boolean checkUser(String name,String pwd){ 
+    public User checkUser(String name,String pwd){ 
           return  userDao.checkNameAndPwd(name, pwd);
     }
      
@@ -30,5 +35,17 @@ public class UserService {
       
     public int modifyUser(User user){
        return  userDao.modifyUser(user);
+    }
+
+    public List<User> getCustomerList() {
+        return userDao.getListByType("Customer");
+    }
+
+    public int getIdByName(String cusName) {
+        return userDao.getIdByName(cusName);
+    }
+
+    public User getUserById(Integer userId) {
+       return userDao.getUserById(userId);
     }
 }

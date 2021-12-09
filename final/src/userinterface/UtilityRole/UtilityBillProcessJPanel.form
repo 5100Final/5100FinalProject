@@ -21,26 +21,30 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBack" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="btnCreateBill" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="lblDueTime" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTotalAmount" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnCreateBill" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="lblDueTime" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTotalAmount" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblCustomer" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lblCustomer" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cbxCustomer" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                              <Component id="txtTotalAmount" alignment="0" pref="137" max="32767" attributes="0"/>
-                              <Component id="txtDueTime" alignment="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cbxCustomer" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="txtTotalAmount" alignment="0" pref="137" max="32767" attributes="0"/>
+                                  <Component id="txtDueTime" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="140" max="32767" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,10 +69,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDueTime" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDueTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCreateBill" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,6 +90,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Bill"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateBillActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
@@ -110,12 +118,7 @@
     <Component class="javax.swing.JComboBox" name="cbxCustomer">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -128,6 +131,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTotalAmount">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ex:08/09/2021"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

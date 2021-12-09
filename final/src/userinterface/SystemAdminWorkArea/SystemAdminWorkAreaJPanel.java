@@ -5,17 +5,25 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.model.user.User;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Zhen Luo <luo.zhe@northeastern.edu>
  */
 public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
-
+    
+    private JSplitPane splitPanel;
+    
+    private User user;
     /**
      * Creates new form SystemAdminWorkAreaJPanel
      */
-    public SystemAdminWorkAreaJPanel() {
+    public SystemAdminWorkAreaJPanel(JSplitPane splitPanel, User user) {
         initComponents();
+        this.splitPanel = splitPanel;
+        this.user = user;
     }
 
     /**
@@ -64,11 +72,19 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblWelcom.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblWelcom.setText("Welcome! Admin");
 
-        lblValue.setText("<value>");
-
         btnPublicService.setText("Manage Public Service Organization");
+        btnPublicService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublicServiceActionPerformed(evt);
+            }
+        });
 
         btnCustomer.setText("Manage Customer");
+        btnCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerActionPerformed(evt);
+            }
+        });
 
         btnManageBill.setText("Manage Bills");
 
@@ -92,11 +108,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(btnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnManageBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(101, 101, 101)
                         .addComponent(lblWelcom)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCustomer, btnMedical, btnPublicService, btnTax, btnUtility});
@@ -127,31 +143,46 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicalActionPerformed
-        // TODO add your handling code here:
-        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("ManageUserAccountJPanel", muajp);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+//        // TODO add your handling code here:
+       SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Medical");
+                splitPanel.setRightComponent(sj);
+//        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, enterprise);
+//        userProcessContainer.add("ManageUserAccountJPanel", muajp);
+//
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnMedicalActionPerformed
 
     private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
-
-        ManageEmployeeJPanel manageEmployeeJPanel = new ManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+         SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Tax");
+                splitPanel.setRightComponent(sj);
+//        ManageEmployeeJPanel manageEmployeeJPanel = new ManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+//        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
+//
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnTaxActionPerformed
 
     private void btnUtilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtilityActionPerformed
-
-        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Utility");
+                splitPanel.setRightComponent(sj);
+                
+//        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+//        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUtilityActionPerformed
+
+    private void btnPublicServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicServiceActionPerformed
+        // TODO add your handling code here:
+                SystemAdminManageOrganizationJPanel sj = new SystemAdminManageOrganizationJPanel("Public");
+                splitPanel.setRightComponent(sj);
+    }//GEN-LAST:event_btnPublicServiceActionPerformed
+
+    private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCustomerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

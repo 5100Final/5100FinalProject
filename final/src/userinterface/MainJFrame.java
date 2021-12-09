@@ -25,8 +25,11 @@ import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import userinterface.CustomerRole.CustomerPayBillJPanel;
+import userinterface.CustomerRole.CustomerWorkAreaJPanel;
 import userinterface.MedicalRole.MedicalRoleWorkAreaJPanel;
+import userinterface.Regiser.RegisterUtilityJPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+import userinterface.UtilityRole.UtilityWorkAreaJPanel;
 
 /**
  *
@@ -96,6 +99,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,7 +122,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addGap(26, 26, 26)
                             .addComponent(loginJLabel)))
                     .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegister))
+                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,114 +164,37 @@ public class MainJFrame extends javax.swing.JFrame {
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
        
-        String userName = userNameJTextField.getText();
+       String userName = userNameJTextField.getText();
         
-        String pwd = new String(passwordField.getPassword());
-        
-       // UserAccount ua =   system.getUserAccountDirectory().authenticateUser(userName, pwd);
-        
-        
+       String pwd = new String(passwordField.getPassword());
         
        UserService us = new UserService();
         
-       User admin = us.findUserByName("admin");
+       User user = us.checkUser(userName,pwd);
        
-       admin.setPassword("2333");
-       
-       System.out.print(us.modifyUser(admin));
-           
-//        User user = new User();
-//        user.setUsername("hxx");
-//        user.setLocation("123");
-//        user.setCompanyId(123);
-//        user.setPassword("222");
-//        user.setType("customer");
-//        
-//        us.addUser(user);
-   
-     
-        //Lombok
-       // Food food = new Food("name",123);
-        
-      //  System.out.print(food.getPrice());
-//                Statement stmt = DBUtil.getStatement();
-////update
-//                QueryRunner queryRunner = new QueryRunner();
-//		Connection connection = DBUtil.getConn();
-//		
-//		String sql = "update admin set password = ? where username = ?";
-//		Object[] params = {pwd,userName};      
-//		try { 
-//			queryRunner.update(connection, sql,params);
-//			 infoBox("update success!!", "valid");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} 
+        if(user == null){
+           infoBox("User not exist! please check", "Invalid");
+           return;
+         }else{
+            if(user.getType().equals("Customer")){
+                //管理员添加删除 下面所有的职员信息
+                CustomerWorkAreaJPanel customerPanel = new CustomerWorkAreaJPanel(jSplitPane1,user);
+                jSplitPane1.setRightComponent(customerPanel);
 
-
-//add
-//	        QueryRunner queryRunner = new QueryRunner();
-//		Connection connection = DBUtil.getConn();
-////		                                     start number
-//		String sql = "insert into user(username,password) values(?,?,?)";
-//		;
-//		Object[] params = {userName,pwd};
-//		/*
-//		 * BeanListHandler:将结果集封装为list集合
-//		 * BeanHandler：将结果集中的第一条记录封装为对象
-//		 * ScalarHandler: 处理单个值，比如记录的个数
-//		 */
-//		try { 
-//			queryRunner.update(connection, sql,params);
-//                        infoBox("add success!!", "valid");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-
-//check
-//                QueryRunner queryRunner = new QueryRunner();
-//		Connection connection = DBUtil.getConn();
-//
-//		String sql = "select * from user where username = ? and password = ?";
-//		Object[] params = {userName,pwd};
-//		try {
-//			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
-//			// System.out.println(user.getUsername());
-//                         //System.out.println(user.getPassword());
-//                         System.out.println(user.getCompanyId());
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} 
-	
-//        if(ua == null){
-//           infoBox("User not exist! please check", "Invalid");
-//           return;
-//         }else{
-//            if(ua.getRole() instanceof SystemAdminRole){
-//                //管理员添加删除 下面所有的职员信息
-//                SystemAdminWorkAreaJPanel systemPanel = new SystemAdminWorkAreaJPanel(jSplitPane1,system);
-//                jSplitPane1.setRightComponent(systemPanel);
-//
-//            }else if(ua.getRole() instanceof ResAdminRole){
-//                
-//                
-//               AdminWorkAreaJPanel adminPanel = new AdminWorkAreaJPanel(jSplitPane1,system,ua);
-//               jSplitPane1.setRightComponent(adminPanel) ;
-//               
-//            }else if(ua.getRole() instanceof DeliverManRole){
-//                
-//               DeliveryManWorkAreaJPanel deliverPanel = new DeliveryManWorkAreaJPanel(jSplitPane1,ua,system);
-//               jSplitPane1.setRightComponent(deliverPanel);
-//               
-//            }else if(ua.getRole() instanceof CustomerRole){
-//                
-//               CustomerAreaJPanel customerAreaPanel = new CustomerAreaJPanel(jSplitPane1,ua,system);
-//               jSplitPane1.setRightComponent(customerAreaPanel);
-//               
-//            }
-//            switchLogOut();
-//        }
-            
+            }else if(user.getType().equals("admin")){
+                System.out.print(user.getType()); 
+               SystemAdminWorkAreaJPanel adminPanel = new SystemAdminWorkAreaJPanel(jSplitPane1,user);
+               
+               jSplitPane1.setRightComponent(adminPanel);
+               
+            }else if(user.getType().equals("Tax") ||user.getType().equals("Public")||user.getType().equals("Utility")||user.getType().equals("Medical") ){
+                
+               UtilityWorkAreaJPanel utilityPanel = new UtilityWorkAreaJPanel(jSplitPane1,user);
+               jSplitPane1.setRightComponent(utilityPanel);
+               
+            }
+            switchLogOut();
+        }           
     }//GEN-LAST:event_loginJButtonActionPerformed
      private void switchLogOut() {
         logoutJButton.setEnabled(true);
@@ -287,12 +218,17 @@ public class MainJFrame extends javax.swing.JFrame {
         container.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
-       
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
        // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        
+                 jSplitPane1.setRightComponent(new RegisterUtilityJPanel());
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments

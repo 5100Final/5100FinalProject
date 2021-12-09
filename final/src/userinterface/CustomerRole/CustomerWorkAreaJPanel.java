@@ -21,32 +21,29 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    
-   
-    
+       
     private JSplitPane splitPanel;
     
-    private User ua;
+    private User user;
  
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public CustomerWorkAreaJPanel(JSplitPane splitPanel, User ua) {
+    public CustomerWorkAreaJPanel(JSplitPane splitPanel, User user) {
         initComponents();
         
         this.splitPanel = splitPanel;
-        this.ua = ua;
+        this.user = user;
         
         
        
-         preWork(ua);
+         preWork(user);
        
       
     }
     
-    
-    void preWork(User ua){
-         customerName.setText(ua.getUsername());
+    void preWork(User user){
+         customerName.setText(user.getUsername());
     }
 
     /**

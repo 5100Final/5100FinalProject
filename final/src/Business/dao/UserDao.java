@@ -8,10 +8,12 @@ import Business.model.user.User;
 import Business.util.DBUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 /**
  *
@@ -26,32 +28,46 @@ public class UserDao {
 		 * ScalarHandler: 处理单个值，比如记录的个数
 		 */
     public void addUser(User user) {
-           	
-		String sql = "insert into user(username,password,type,location,company_id) values(?,?,?,?,?)";
+		String sql = "insert into user(username,password,type,location,company_id,role) values(?,?,?,?,?,?)";
 		
-		Object[] params = {user.getUsername(),user.getPassword(),user.getType(),user.getLocation(),user.getCompanyId()};
+		Object[] params = {user.getUsername(),user.getPassword(),user.getType(),user.getLocation(),user.getCompanyId(),user.getRole()};
 		
 		try { 
 			queryRunner.update(connection, sql,params);
                         
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}   
     }
-    
-      public boolean checkNameAndPwd(String userName,String pwd) {
+     public boolean CheckName(String userName) {
+           	
+		String sql = "select * from user where username = ?";
+		
+		Object[] params = {userName};
+		
+		try { 
+			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return user == null ? true : false;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+                return true;
+    }
+     
+      public User checkNameAndPwd(String userName,String pwd) {
            	
 		String sql = "select * from user where username = ? and password = ?";
 		Object[] params = {userName,pwd};
 		try {
 			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
-                       return  user == null ? false:true ;
+                       return  user;
                         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
              
-                return false;
+                return null;
     }
         public int modifyUser(User user) {
            	
@@ -72,6 +88,45 @@ public class UserDao {
     public User findUserByName(String name) {
                 String sql = "select * from user where username = ? ";
 		Object[] params = {name};
+		try {
+			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  user == null ? null:user;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
+    public List<User> getListByType(String type) {
+                String sql = "select * from user where type = ? ";
+		Object[] params = {type};
+		try {
+			List<User> users = (List<User>)queryRunner.query(connection, sql,new BeanListHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  users == null ? null:users;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
+    public int getIdByName(String cusName) {
+               String sql = "select * from user where username = ? ";
+		Object[] params = {cusName};
+		try {
+			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  user == null ? -1:user.getId();
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return -1;
+    }
+
+    public User getUserById(Integer userId) {
+                String sql = "select * from user where id = ? ";
+		Object[] params = {userId};
 		try {
 			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
                         return  user == null ? null:user;

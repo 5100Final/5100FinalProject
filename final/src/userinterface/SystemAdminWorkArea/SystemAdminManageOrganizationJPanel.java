@@ -8,13 +8,16 @@ package userinterface.SystemAdminWorkArea;
  *
  * @author Frank
  */
-public class SystemAdminManageMedicalJPanel extends javax.swing.JPanel {
-
+public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
+    String type;
     /**
      * Creates new form SystemAdminManageMedical
      */
-    public SystemAdminManageMedicalJPanel() {
+    public SystemAdminManageOrganizationJPanel(String type) {
         initComponents();
+        this.type = type;
+        
+        preWork();
     }
 
     /**
@@ -48,11 +51,11 @@ public class SystemAdminManageMedicalJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "UserName", "Type", "Name", "Password"
+                "UserName", "Type", "Role", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -81,16 +84,18 @@ public class SystemAdminManageMedicalJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnChange)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(332, 332, 332)
                                 .addComponent(btnDelete))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnBack)
-                                .addComponent(lblTitle))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBack)
+                                    .addComponent(lblTitle))
+                                .addGap(260, 260, 260))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,4 +130,9 @@ public class SystemAdminManageMedicalJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblMedical;
     // End of variables declaration//GEN-END:variables
+
+    private void preWork() {
+       lblTitle.setText(this.type);
+       
+    }
 }

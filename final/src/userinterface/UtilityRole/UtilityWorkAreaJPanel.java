@@ -4,19 +4,35 @@
  */
 package userinterface.UtilityRole;
 
+import Business.model.order.Order;
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.util.List;
+import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Frank
  */
 public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
-
+  
+    private JSplitPane splitPanel;
+    private OrderService orderService ;
+     private UserService userService ;
+    private User user;
     /**
      * Creates new form UtilityWorkAreaJPanel
      */
-    public UtilityWorkAreaJPanel() {
+    public UtilityWorkAreaJPanel(JSplitPane splitPanel,User user) {
         initComponents();
+        this.splitPanel = splitPanel;
+        this.user = user;
+        orderService = new OrderService();
+        userService = new UserService();
+        preWork(user);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +64,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Bill Number", "Patient", "Total Amount", "Status", "Payment Due"
+                "Bill Number", "User", "Total Amount", "Status", "Payment Due"
             }
         ) {
             Class[] types = new Class [] {
@@ -84,6 +100,11 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
         lblBillNumber.setText("Bill Number:");
 
         btnNewBill.setText("New Bill");
+        btnNewBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewBillActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,7 +126,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnNewBill)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +146,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnNewBill)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,6 +157,12 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
     private void txtFindBillNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindBillNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFindBillNumberActionPerformed
+
+    private void btnNewBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBillActionPerformed
+        // TODO add your handling code here:
+        UtilityBillProcessJPanel ub = new UtilityBillProcessJPanel(splitPanel,user);
+        splitPanel.setRightComponent(ub);
+    }//GEN-LAST:event_btnNewBillActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -148,4 +175,30 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblBill;
     private javax.swing.JTextField txtFindBillNumber;
     // End of variables declaration//GEN-END:variables
+
+    private void preWork(User user) {
+        lblOrganization.setText(user.getType()+" Service");
+        lblCompanyName.setText(user.getUsername());
+        List<Order> list  = orderService.getListById(user.getId());
+        populateTable(list);
+        
+    }
+    
+    public void populateTable(List<Order> orders){
+        
+ 
+          DefaultTableModel orderModel = (DefaultTableModel) tblBill.getModel();
+     
+          orderModel.setRowCount(0);
+
+          for(Order order:orders){
+            Object[] row = new Object[5];
+            row[0] = order.getId();
+            row[1] = userService.getUserById(order.getUserId()).getUsername();
+            row[2] = order.getFee();
+            row[3] = order.getStatus();
+            row[4] = order.getDdl();
+            orderModel.addRow(row);
+         }
+    }
 }

@@ -19,5 +19,5 @@ public class Order {
     private Integer fee;
     private Integer companyId;
     private Integer userId;
-    
+    private String status;
 }

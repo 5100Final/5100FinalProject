@@ -57,7 +57,7 @@
                               </Group>
                           </Group>
                           <Component id="loginJButton" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="btnRegister" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRegister" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -128,6 +128,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Register"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

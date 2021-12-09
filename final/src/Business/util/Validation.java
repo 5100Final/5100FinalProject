@@ -4,13 +4,15 @@
  */
 package Business.util;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Animal
  */
 public class Validation {
-    
-      private boolean isValid(String s){
+ 
+     private boolean isValid(String s){
         return s.matches("^[A-Za-z0-9]+$");
     }
      private boolean isValidString(String s){

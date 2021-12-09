@@ -12,7 +12,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
-import static userinterface.TaxRole.ViewPanel.infoBox;
+
 
 /**
  *
