@@ -8,12 +8,12 @@ package userinterface.SystemAdminWorkArea;
  *
  * @author Frank
  */
-public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
+public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form SystemAdminManagePublicServiceJPanel
+     * Creates new form SystemAdminManageUtilityJPanel
      */
-    public SystemAdminManagePublicServiceJPanel() {
+    public SystemAdminManageOrganizationJPanel() {
         initComponents();
     }
 
@@ -26,21 +26,17 @@ public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnChange = new javax.swing.JButton();
-        btnNew = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPublicSevice = new javax.swing.JTable();
+        tblUtility = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
-
-        btnChange.setText("Change");
-
-        btnNew.setText("New");
+        btnChange = new javax.swing.JButton();
+        btnNew = new javax.swing.JButton();
 
         btnBack.setText("<<Back");
 
-        tblPublicSevice.setModel(new javax.swing.table.DefaultTableModel(
+        tblUtility.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -59,9 +55,9 @@ public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblPublicSevice);
+        jScrollPane1.setViewportView(tblUtility);
 
-        lblTitle.setText("Public Service");
+        lblTitle.setText("Utilities:");
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +65,10 @@ public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+
+        btnChange.setText("Change");
+
+        btnNew.setText("New");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,7 +90,7 @@ public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +107,7 @@ public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
                     .addComponent(btnChange))
                 .addGap(18, 18, 18)
                 .addComponent(btnNew)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,6 +123,6 @@ public class SystemAdminManagePublicServiceJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNew;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblPublicSevice;
+    private javax.swing.JTable tblUtility;
     // End of variables declaration//GEN-END:variables
 }

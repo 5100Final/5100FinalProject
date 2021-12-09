@@ -28,33 +28,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        btnMedical = new javax.swing.JButton();
-        btnTax = new javax.swing.JButton();
         btnUtility = new javax.swing.JButton();
         lblWelcom = new javax.swing.JLabel();
         lblValue = new javax.swing.JLabel();
-        btnPublicService = new javax.swing.JButton();
         btnCustomer = new javax.swing.JButton();
         btnManageBill = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("My Work Area -Adminstrative");
 
-        btnMedical.setText("Manage Medical Organization");
-        btnMedical.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMedicalActionPerformed(evt);
-            }
-        });
-
-        btnTax.setText("Manage Tax Organization");
-        btnTax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaxActionPerformed(evt);
-            }
-        });
-
-        btnUtility.setText("Manage Utility Organization");
+        btnUtility.setText("Manage Organization");
         btnUtility.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUtilityActionPerformed(evt);
@@ -65,8 +48,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblWelcom.setText("Welcome! Admin");
 
         lblValue.setText("<value>");
-
-        btnPublicService.setText("Manage Public Service Organization");
 
         btnCustomer.setText("Manage Customer");
 
@@ -86,9 +67,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTax, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPublicService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnManageBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
@@ -99,7 +77,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCustomer, btnMedical, btnPublicService, btnTax, btnUtility});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCustomer, btnUtility});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,37 +91,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnUtility)
                 .addGap(18, 18, 18)
-                .addComponent(btnTax)
-                .addGap(18, 18, 18)
-                .addComponent(btnMedical)
-                .addGap(18, 18, 18)
-                .addComponent(btnPublicService)
-                .addGap(18, 18, 18)
                 .addComponent(btnCustomer)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageBill)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicalActionPerformed
-        // TODO add your handling code here:
-        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("ManageUserAccountJPanel", muajp);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnMedicalActionPerformed
-
-    private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
-
-        ManageEmployeeJPanel manageEmployeeJPanel = new ManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-
-    }//GEN-LAST:event_btnTaxActionPerformed
 
     private void btnUtilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtilityActionPerformed
 
@@ -157,9 +110,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCustomer;
     private javax.swing.JButton btnManageBill;
-    private javax.swing.JButton btnMedical;
-    private javax.swing.JButton btnPublicService;
-    private javax.swing.JButton btnTax;
     private javax.swing.JButton btnUtility;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblValue;

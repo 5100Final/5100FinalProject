@@ -8,12 +8,12 @@ package userinterface.CustomerRole;
  *
  * @author Frank
  */
-public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
+public class CustomerManageOrganizationJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CustomerManageUtility
      */
-    public CustomerManageUtilityJPanel() {
+    public CustomerManageOrganizationJPanel() {
         initComponents();
     }
 
@@ -29,7 +29,7 @@ public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBill = new javax.swing.JTable();
-        lblTitle = new javax.swing.JLabel();
+        lblValue = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnPayment = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -57,8 +57,8 @@ public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblBill);
 
-        lblTitle.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        lblTitle.setText("Utility");
+        lblValue.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        lblValue.setText("<Value>");
 
         jLabel1.setText("Bills:");
 
@@ -75,7 +75,7 @@ public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnPayment)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTitle)
+                        .addComponent(lblValue)
                         .addComponent(btnBack)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -83,7 +83,7 @@ public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +91,7 @@ public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
-                .addComponent(lblTitle)
+                .addComponent(lblValue)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -111,7 +111,7 @@ public class CustomerManageUtilityJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblValue;
     private javax.swing.JTable tblBill;
     // End of variables declaration//GEN-END:variables
 }

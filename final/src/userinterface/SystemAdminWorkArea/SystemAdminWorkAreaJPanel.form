@@ -27,9 +27,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnMedical" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="btnTax" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="btnPublicService" linkSize="1" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnCustomer" linkSize="1" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnManageBill" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -58,16 +55,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnUtility" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnTax" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnMedical" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnPublicService" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCustomer" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnManageBill" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="214" max="32767" attributes="0"/>
+              <EmptySpace pref="337" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,25 +72,9 @@
         <Property name="text" type="java.lang.String" value="My Work Area -Adminstrative"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMedical">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Medical Organization"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMedicalActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnTax">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Tax Organization"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaxActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnUtility">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Utility Organization"/>
+        <Property name="text" type="java.lang.String" value="Manage Organization"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUtilityActionPerformed"/>
@@ -116,11 +91,6 @@
     <Component class="javax.swing.JLabel" name="lblValue">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;value&gt;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPublicService">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Public Service Organization"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCustomer">
