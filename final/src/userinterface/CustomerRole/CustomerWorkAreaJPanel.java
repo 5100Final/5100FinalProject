@@ -5,15 +5,23 @@
 package userinterface.CustomerRole;
 
 
+import Business.model.order.Order;
+import Business.model.user.Customer;
 import Business.model.user.User;
+import Business.service.CustomerService;
+import Business.service.OrderService;
+import Business.service.UserService;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
+import static userinterface.MainJFrame.infoBox;
 /**
  *
  * @author raunak
@@ -23,7 +31,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
        
     private JSplitPane splitPanel;
-    
+    private CustomerService cs;
+    private OrderService os;
+    private UserService us;
     private User user;
  
     /**
@@ -34,18 +44,52 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         
         this.splitPanel = splitPanel;
         this.user = user;
-        
-        
-       
+        this.cs = new CustomerService();
+        this.os = new OrderService();
+        this.us = new UserService();
          preWork(user);
-       
-      
+
     }
     
     void preWork(User user){
          customerName.setText(user.getUsername());
+         Customer cus =  cs.getCusByName(user.getUsername());
+         
+         populateInformation(cus);
+         populateTable(os.getListByCus(user.getUsername()));
+                 
     }
+    public void populateInformation(Customer cus){
+         SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
+         
+        txtAddress.setText(cus.getAddr());
+        try{
+         txtBirthday.setText(sdf.format(cus.getBirthday()));
+        }catch(Exception e){
+         return;
+       }
+       
+        txtPhoneNumber.setText(cus.getPhone());
+        txtEmail.setText(cus.getEmail());
+        txtSSN.setText(cus.getSsn());
+    }
+    
+ public void populateTable(List<Order> orders){
+        
+          DefaultTableModel billModel = (DefaultTableModel) tblRecentBill.getModel();
+     
+          billModel.setRowCount(0);
 
+          for(Order order:orders){
+            Object[] row = new Object[5];
+            row[0] = order.getId();
+            row[1] = us.getTypeByName(order.getCompanyId());
+            row[2] = order.getCompanyId();
+            row[3] = order.getFee();
+            row[4] = order.getDdl();
+            billModel.addRow(row);
+         }
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,6 +123,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         bntPayBill = new javax.swing.JButton();
         btnChangeInfo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(186, 194, 212));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -143,8 +188,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 140));
 
+        jLabel1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jLabel1.setText("Recent unpaid bill:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         btnUtility.setText("Utility");
         add(btnUtility, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
@@ -164,16 +210,52 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         bntPayBill.setText("View and Pay");
         add(bntPayBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 110, 20));
 
-        btnChangeInfo.setText("Change Information");
-        add(btnChangeInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        btnChangeInfo.setText("Save Information");
+        btnChangeInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeInfoActionPerformed(evt);
+            }
+        });
+        add(btnChangeInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 190, 150, -1));
 
         jButton1.setText("Management Payment method");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, -1, -1));
+
+        jLabel2.setText("ex:08/09/2021");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 115, -1, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void btnChangeInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeInfoActionPerformed
+         
+           Date birth = null;
+         try{
+           SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
+           birth =  sdf.parse(txtBirthday.getText()); 
+         }catch(Exception e){
+            infoBox("Date format wrong!!", "Valid");
+            return;
+         }
+         
+           Customer cus = new Customer();
+           cus.setUsername(user.getUsername());
+           cus.setAddr(txtAddress.getText());
+           cus.setBirthday(birth);
+           cus.setPhone(txtPhoneNumber.getText());
+           cus.setEmail(txtEmail.getText());
+           cus.setSsn(txtSSN.getText());
+           
+           if(cs.updateCus(cus)>0){
+                infoBox("Save information success!!", "Valid");
+            }else{
+                 infoBox("Save information fail!!", "invalid");
+           }
+                         
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChangeInfoActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntPayBill;
@@ -186,6 +268,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBirthday;

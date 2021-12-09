@@ -36,4 +36,8 @@ public class OrderService {
     public int deletedById(String id) {
        return orderDao.deletedById(id);
     }
+
+    public List<Order> getListByCus(String username) {
+       return orderDao.getListByCus(username);
+    }
 }

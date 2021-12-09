@@ -5,6 +5,7 @@
 package userinterface.Regiser;
 
 import Business.model.user.User;
+import Business.service.CustomerService;
 import Business.service.UserService;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -295,8 +296,9 @@ public class RegisterUtilityJPanel extends javax.swing.JPanel {
         user.setCompanyId(111);
         
         UserService us = new UserService();
+        CustomerService cs = new CustomerService();
         boolean flag = us.addUser(user);
-        
+        cs.addCus(userName);
        if(flag){
            infoBox("User register success!!", "Valid");
        }else{

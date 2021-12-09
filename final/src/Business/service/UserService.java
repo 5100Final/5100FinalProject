@@ -62,4 +62,8 @@ public class UserService {
     public int deletedByName(String name) {
         return userDao.deletedByName(name);
     }
+
+    public String getTypeByName(String name) {
+        return userDao.getTypeByName(name);
+    }
 }

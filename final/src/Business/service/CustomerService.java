@@ -4,10 +4,25 @@
  */
 package Business.service;
 
+import Business.dao.CustomerDao;
+import Business.model.user.Customer;
+
 /**
  *
  * @author Animal
  */
 public class CustomerService {
+    CustomerDao cusDao = new CustomerDao();
+    public void addCus(String name) {
+        cusDao.addCus(name);
+    }
+
+    public int updateCus(Customer cus) {
+        return cusDao.updateCus(cus);
+    }
+
+    public Customer getCusByName(String username) {
+          return cusDao.getCusByName(username);
+    }
     
 }

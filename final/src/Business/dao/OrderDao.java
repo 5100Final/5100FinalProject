@@ -97,5 +97,19 @@ public class OrderDao {
                 return 0;
     }
 
+    public List<Order> getListByCus(String username) {
+                String sql = "select * from orders where user_id = ? ";
+                
+		Object[] params = {username};
+		try {
+			List<Order> orders = (List<Order>)queryRunner.query(connection, sql,new BeanListHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  orders == null ? null:orders;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
    
 }

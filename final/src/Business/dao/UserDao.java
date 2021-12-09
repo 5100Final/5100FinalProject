@@ -126,6 +126,7 @@ public class UserDao {
     }
 
     public int getIdByName(String cusName) {
+        
                String sql = "select * from user where username = ? ";
 		Object[] params = {cusName};
 		try {
@@ -136,6 +137,7 @@ public class UserDao {
 			e.printStackTrace();
 		} 
                 return -1;
+                
     }
 
     public User getUserById(Integer userId) {
@@ -178,5 +180,18 @@ public class UserDao {
 			e.printStackTrace();
 		} 
                 return 0;
+    }
+
+    public String getTypeByName(String name) {
+                String sql = "select * from user where username = ? ";
+		Object[] params = {name};
+		try {
+			User user = (User)queryRunner.query(connection, sql,new BeanHandler(User.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  user == null ? null:user.getType();
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
     }
 }
