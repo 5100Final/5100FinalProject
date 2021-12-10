@@ -176,7 +176,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-        // Get user name
+        
        
        String userName = userNameJTextField.getText();
         
