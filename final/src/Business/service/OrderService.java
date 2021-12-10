@@ -42,4 +42,8 @@ public class OrderService {
     public List<Order> getListByCus(String username) {
        return orderDao.getListByCus(username);
     }
+
+    public int finishPay(String id) {
+      return  orderDao.finishPay(id);
+    }
 }

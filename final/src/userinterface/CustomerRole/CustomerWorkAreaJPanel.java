@@ -292,7 +292,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        CustomerPayBillJPanel cp = new CustomerPayBillJPanel(splitPanel,user,(String)tblRecentBill.getValueAt(selectedRow, 0));
+        CustomerPayBillJPanel cp = new CustomerPayBillJPanel(splitPanel,user,tblRecentBill.getValueAt(selectedRow, 0)+"");
         splitPanel.setRightComponent(cp);
     }//GEN-LAST:event_bntPayBillActionPerformed
 

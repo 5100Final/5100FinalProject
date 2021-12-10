@@ -18,6 +18,10 @@ public class PayService {
     public List<PayMethod> getListByUser(String username) {
         return  payDao.getListByUser(username);
     }
+
+    public List<PayMethod> getNumberByMethod(String method,String username) {
+        return  payDao.getNumberByMethod(method,username);
+    }
     
     
 }

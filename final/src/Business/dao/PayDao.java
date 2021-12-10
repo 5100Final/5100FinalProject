@@ -24,7 +24,7 @@ public class PayDao {
     Connection connection = DBUtil.getConn();
      
     public List<PayMethod> getListByUser(String username) {
-     	        String sql = "select * from orders where username = ? ";
+     	        String sql = "select * from pay_method where username = ? ";
                 
 		Object[] params = {username};
 		try {
@@ -33,8 +33,21 @@ public class PayDao {
                         
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		}       
+                return null;
+    }
+
+    public List<PayMethod> getNumberByMethod(String method,String username) {
+           String sql = "select * from pay_method where username = ? and method = ?";
                 
+		Object[] params = {username,method};
+		try {
+			List<PayMethod> methods = (List<PayMethod>)queryRunner.query(connection, sql,new BeanListHandler(PayMethod.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  methods;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}       
                 return null;
     }
     

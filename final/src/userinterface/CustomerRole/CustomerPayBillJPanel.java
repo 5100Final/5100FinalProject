@@ -23,6 +23,7 @@ import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
+import static userinterface.MainJFrame.infoBox;
 
 
 /**
@@ -36,7 +37,8 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
     private User user;
     private CustomerService cs;
     private OrderService os;
-    private UserService us; private PayService ps;
+    private UserService us; 
+    private PayService ps;
     private String method;
     /**
      * Creates new form DoctorWorkAreaJPanel
@@ -86,13 +88,12 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
     }
      private void populateInformation(Order order) {
       // setEditable(false)
-        SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
+        SimpleDateFormat sdf = new SimpleDateFormat( "MM/dd/yyyy" ); 
         txtDepartment.setText(us.getTypeByName(order.getCompanyId()));
         txtFrom.setText(order.getCompanyId());
         txtTotalAmount.setText(order.getFee()+"");
         txtPaymentDue.setText(sdf.format(order.getDdl()));
         txtBillNumber.setText(order.getId()+"");
-        
         
     } 
 
@@ -115,20 +116,20 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         enterpriseLabel1 = new javax.swing.JLabel();
         lblDepartment = new javax.swing.JLabel();
-        txtDepartment = new javax.swing.JTextField();
         lblFrom = new javax.swing.JLabel();
-        txtFrom = new javax.swing.JTextField();
         lblTotalAmount = new javax.swing.JLabel();
-        txtTotalAmount = new javax.swing.JTextField();
         lblPaymentDue = new javax.swing.JLabel();
-        txtPaymentDue = new javax.swing.JTextField();
         lblSelectPayment = new javax.swing.JLabel();
         cbxSelectPayment = new javax.swing.JComboBox<>();
         lblBillNumber = new javax.swing.JLabel();
-        txtBillNumber = new javax.swing.JTextField();
         btnPayment = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         cbxSelectCard = new javax.swing.JComboBox<>();
+        txtDepartment = new javax.swing.JLabel();
+        txtFrom = new javax.swing.JLabel();
+        txtTotalAmount = new javax.swing.JLabel();
+        txtPaymentDue = new javax.swing.JLabel();
+        txtBillNumber = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,8 +162,6 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
 
         lblDepartment.setText("Department:");
 
-        txtDepartment.setEnabled(false);
-
         lblFrom.setText("From:");
 
         lblTotalAmount.setText("Total Amount:");
@@ -176,10 +175,30 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
         lblBillNumber.setText("Bill Number:");
 
         btnPayment.setText("Make Payment");
+        btnPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaymentActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         cbxSelectCard.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Card Number" }));
+
+        txtDepartment.setText("txt");
+
+        txtFrom.setText("txt");
+
+        txtTotalAmount.setText("txt");
+
+        txtPaymentDue.setText("txt");
+
+        txtBillNumber.setText("txt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -198,30 +217,22 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
                             .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtPaymentDue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnPayment))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDepartment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(68, 68, 68)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblSelectPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbxSelectPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbxSelectCard, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addComponent(txtPaymentDue)
+                            .addComponent(txtFrom)
+                            .addComponent(txtDepartment)
+                            .addComponent(txtTotalAmount)
+                            .addComponent(txtBillNumber))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblSelectPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxSelectPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxSelectCard, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBillNumber, txtDepartment, txtFrom, txtPaymentDue, txtTotalAmount});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -230,32 +241,54 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDepartment)
-                    .addComponent(txtDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSelectPayment))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFrom)
-                    .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxSelectPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotalAmount)
-                    .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxSelectCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPaymentDue)
-                    .addComponent(txtPaymentDue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPayment))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDepartment)
+                            .addComponent(txtDepartment))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFrom)
+                            .addComponent(txtFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotalAmount)
+                            .addComponent(txtTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPaymentDue)
+                            .addComponent(txtPaymentDue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSelectPayment)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxSelectPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxSelectCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBillNumber)
-                    .addComponent(txtBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(138, Short.MAX_VALUE))
+                    .addComponent(txtBillNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPayment))
+                .addGap(159, 159, 159))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
+        // TODO add your handling code here:
+        String id = txtBillNumber.getText();
+        if(os.finishPay(id)>0){
+           infoBox("Payment finished!!", "Valid");
+        }else{
+           infoBox("Payment fail!!", "invalid");
+        }
+    }//GEN-LAST:event_btnPaymentActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CustomerWorkAreaJPanel cp = new CustomerWorkAreaJPanel(splitPanel,user);
+        splitPanel.setRightComponent(cp);
+    }//GEN-LAST:event_btnBackActionPerformed
 // public void populateTable(List<Restaurant> list){
 //         
 //        DefaultTableModel priceModel = (DefaultTableModel) PriceTable.getModel();
@@ -298,11 +331,11 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPaymentDue;
     private javax.swing.JLabel lblSelectPayment;
     private javax.swing.JLabel lblTotalAmount;
-    private javax.swing.JTextField txtBillNumber;
-    private javax.swing.JTextField txtDepartment;
-    private javax.swing.JTextField txtFrom;
-    private javax.swing.JTextField txtPaymentDue;
-    private javax.swing.JTextField txtTotalAmount;
+    private javax.swing.JLabel txtBillNumber;
+    private javax.swing.JLabel txtDepartment;
+    private javax.swing.JLabel txtFrom;
+    private javax.swing.JLabel txtPaymentDue;
+    private javax.swing.JLabel txtTotalAmount;
     // End of variables declaration//GEN-END:variables
 
    

@@ -72,27 +72,18 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtTotalAmount" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtBillNumber" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="txtPaymentDue" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnPayment" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtDepartment" linkSize="1" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="txtFrom" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="68" pref="68" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblSelectPayment" max="32767" attributes="0"/>
-                                      <Component id="cbxSelectPayment" max="32767" attributes="0"/>
-                                      <Component id="cbxSelectCard" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
+                          <Component id="txtPaymentDue" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFrom" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDepartment" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTotalAmount" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBillNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblSelectPayment" max="32767" attributes="0"/>
+                          <Component id="cbxSelectPayment" max="32767" attributes="0"/>
+                          <Component id="cbxSelectCard" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnPayment" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -100,7 +91,7 @@
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="101" max="32767" attributes="0"/>
+              <EmptySpace pref="247" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -112,35 +103,44 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="enterpriseLabel1" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblSelectPayment" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblFrom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFrom" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTotalAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTotalAmount" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblPaymentDue" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPaymentDue" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblSelectPayment" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="cbxSelectPayment" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="cbxSelectCard" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblFrom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFrom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbxSelectPayment" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTotalAmount" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTotalAmount" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbxSelectCard" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPaymentDue" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPaymentDue" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPayment" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblBillNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBillNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBillNumber" alignment="3" max="32767" attributes="0"/>
+                  <Component id="btnPayment" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="138" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,31 +159,20 @@
         <Property name="text" type="java.lang.String" value="Department:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDepartment">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblFrom">
       <Properties>
         <Property name="text" type="java.lang.String" value="From:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtFrom">
     </Component>
     <Component class="javax.swing.JLabel" name="lblTotalAmount">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total Amount:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTotalAmount">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblPaymentDue">
       <Properties>
         <Property name="text" type="java.lang.String" value="Payment due:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtPaymentDue">
     </Component>
     <Component class="javax.swing.JLabel" name="lblSelectPayment">
       <Properties>
@@ -207,17 +196,21 @@
         <Property name="text" type="java.lang.String" value="Bill Number:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBillNumber">
-    </Component>
     <Component class="javax.swing.JButton" name="btnPayment">
       <Properties>
         <Property name="text" type="java.lang.String" value="Make Payment"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaymentActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbxSelectCard">
       <Properties>
@@ -230,6 +223,31 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtDepartment">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="txt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtFrom">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="txt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtTotalAmount">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="txt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtPaymentDue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="txt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtBillNumber">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="txt"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

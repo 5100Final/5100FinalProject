@@ -98,7 +98,7 @@ public class OrderDao {
     }
 
     public List<Order> getListByCus(String username) {
-                String sql = "select * from orders where user_id = ? ";
+                String sql = "select * from orders where user_id = ? and status != 'finished' ";
                 
 		Object[] params = {username};
 		try {
@@ -124,6 +124,22 @@ public class OrderDao {
 		} 
                 return null;
  
+    }
+
+    public int finishPay(String id) {
+        
+                QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = "update orders set status = ? where id = ? ";
+		Object[] params = {"finished",id};      
+		try { 
+			return queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return 0;
     }
 
    
