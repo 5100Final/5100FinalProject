@@ -5,6 +5,7 @@
         <group>
             <file>file:/G:/git/5100FinalProject/final/src/userinterface/TaxRole/TaxWorkAreaJPanel.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/Business/dao/CustomerDao.java</file>
+            <file>file:/G:/git/5100FinalProject/final/src/userinterface/PublicServiceRole/PublicServiceBillProcessJPanel.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/Business/service/PayService.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/userinterface/UtilityRole/UtilityWorkAreaJPanel.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/userinterface/TaxRole/TaxBillProcessJPanel.java</file>
@@ -22,6 +23,7 @@
             <file>file:/G:/git/5100FinalProject/final/src/userinterface/SystemAdminWorkArea/SystemAdminManageInformationJPanel.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/Business/model/user/UserType.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/userinterface/PublicServiceRole/PublicServiceWorkAreaJPanel.java</file>
+            <file>file:/G:/git/5100FinalProject/final/src/Business/model/enterprise/medical/MedicalCompany.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/Business/dao/PayDao.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/Business/util/DBUtil.java</file>
             <file>file:/G:/git/5100FinalProject/final/src/Business/dao/OrderDao.java</file>
