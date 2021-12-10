@@ -36,7 +36,6 @@ public class RegisterUtilityJPanel extends javax.swing.JPanel {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    // 选择的下拉框选项
                     type = (String) e.getItem();
                     cbxRole.removeAllItems();
                     if(e.getItem().equals("Utility")){

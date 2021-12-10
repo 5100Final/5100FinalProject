@@ -142,5 +142,19 @@ public class OrderDao {
                 return 0;
     }
 
+    public List<Order> getListByType(String type, String username) {
+                String sql = "SELECT DISTINCT r1.id,r1.user_id,r1.status,r1.company_id,r1.fee,r1.ddl FROM orders r1 join user r2  ON  r2.username = r1.company_id where r2.type = ? and r1.user_id = ? and r1.status != 'finished'";
+                
+		Object[] params = {type,username};
+		try {
+			List<Order> orders = (List<Order>)queryRunner.query(connection, sql,new BeanListHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  orders == null ? null:orders;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
    
 }

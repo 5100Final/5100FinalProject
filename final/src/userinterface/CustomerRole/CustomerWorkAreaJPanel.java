@@ -61,17 +61,18 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     }
     public void populateInformation(Customer cus){
          SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
-         
-        txtAddress.setText(cus.getAddr());
-        try{
-         txtBirthday.setText(sdf.format(cus.getBirthday()));
-        }catch(Exception e){
-         return;
+         if(cus != null){
+                 txtAddress.setText(cus.getAddr());
+           try{
+             txtBirthday.setText(sdf.format(cus.getBirthday()));
+               }catch(Exception e){
+           return;
        }
        
-        txtPhoneNumber.setText(cus.getPhone());
-        txtEmail.setText(cus.getEmail());
-        txtSSN.setText(cus.getSsn());
+            txtPhoneNumber.setText(cus.getPhone());
+            txtEmail.setText(cus.getEmail());
+            txtSSN.setText(cus.getSsn());
+           }
     }
     
  public void populateTable(List<Order> orders){
@@ -124,7 +125,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         btnChangeInfo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(186, 194, 212));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -200,15 +200,35 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         btnUtility.setText("Utility");
+        btnUtility.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUtilityActionPerformed(evt);
+            }
+        });
         add(btnUtility, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
 
         btnTax.setText("Tax");
+        btnTax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaxActionPerformed(evt);
+            }
+        });
         add(btnTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 120, -1));
 
         btnMedical.setText("Medical");
+        btnMedical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedicalActionPerformed(evt);
+            }
+        });
         add(btnMedical, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
 
         btnPublicService.setText("Public Service");
+        btnPublicService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublicServiceActionPerformed(evt);
+            }
+        });
         add(btnPublicService, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, -1, -1));
 
         lblMore.setText("More:");
@@ -240,9 +260,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("ex:08/09/2021");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 115, -1, 10));
-
-        jButton2.setText("Manage supplier");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
@@ -299,6 +316,27 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private void txtBirthdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBirthdayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBirthdayActionPerformed
+
+    private void btnUtilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtilityActionPerformed
+        // TODO add your handling code here:
+        
+        populateTable(os.getListByType("Utility",user.getUsername()));
+    }//GEN-LAST:event_btnUtilityActionPerformed
+
+    private void btnPublicServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicServiceActionPerformed
+        // TODO add your handling code here:
+        populateTable(os.getListByType("Public",user.getUsername()));
+    }//GEN-LAST:event_btnPublicServiceActionPerformed
+
+    private void btnMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicalActionPerformed
+        // TODO add your handling code here:
+        populateTable(os.getListByType("Medical",user.getUsername()));
+    }//GEN-LAST:event_btnMedicalActionPerformed
+
+    private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
+        // TODO add your handling code here:
+        populateTable(os.getListByType("Tax",user.getUsername()));
+    }//GEN-LAST:event_btnTaxActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntPayBill;
@@ -310,7 +348,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel customerName;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

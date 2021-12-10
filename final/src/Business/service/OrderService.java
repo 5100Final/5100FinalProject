@@ -46,4 +46,8 @@ public class OrderService {
     public int finishPay(String id) {
       return  orderDao.finishPay(id);
     }
+
+    public List<Order> getListByType(String type, String username) {
+       return orderDao.getListByType(type,username);
+    }
 }
