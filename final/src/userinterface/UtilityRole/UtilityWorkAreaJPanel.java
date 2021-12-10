@@ -8,6 +8,7 @@ import Business.model.order.Order;
 import Business.model.user.User;
 import Business.service.OrderService;
 import Business.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,6 +51,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
         txtFindBillNumber = new javax.swing.JTextField();
         lblBillNumber = new javax.swing.JLabel();
         btnNewBill = new javax.swing.JButton();
+        btnAll = new javax.swing.JButton();
 
         lblOrganization.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         lblOrganization.setText("Public Service");
@@ -106,6 +108,13 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAll.setText("List All");
+        btnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,8 +130,10 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(lblBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(txtFindBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAll))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnNewBill)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -137,11 +148,13 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(lblCompanyName)))
-                .addGap(25, 25, 25)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFindBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFindBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -151,7 +164,12 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-
+        if(txtFindBillNumber.getText()!=null){
+            List<Order> orders = new ArrayList<>();
+            orders.add(orderService.getOrderById(txtFindBillNumber.getText()));
+            populateTable(orders);
+        }       
+        
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void txtFindBillNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindBillNumberActionPerformed
@@ -164,8 +182,15 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
         splitPanel.setRightComponent(ub);
     }//GEN-LAST:event_btnNewBillActionPerformed
 
+    private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
+        // TODO add your handling code here:
+         List<Order> list  = orderService.getListByCompanyId(user.getUsername());
+        populateTable(list);
+    }//GEN-LAST:event_btnAllActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAll;
     private javax.swing.JButton btnFind;
     private javax.swing.JButton btnNewBill;
     private javax.swing.JScrollPane jScrollPane1;
@@ -179,7 +204,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
     private void preWork(User user) {
         lblOrganization.setText(user.getType()+" Service");
         lblCompanyName.setText(user.getUsername());
-        List<Order> list  = orderService.getListById(user.getUsername());
+        List<Order> list  = orderService.getListByCompanyId(user.getUsername());
         populateTable(list);
     }
     

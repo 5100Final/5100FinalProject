@@ -16,9 +16,10 @@ import java.util.List;
 public class OrderService {
    OrderDao orderDao = new OrderDao();
  
-    public  List<Order> getListById(String id) {
+    public  List<Order> getListByCompanyId(String id) {
         return orderDao.getListByCompanyId(id);
     }
+ 
     public Order getOrderById(String id) {
         return orderDao.getOrderById(id);
     }

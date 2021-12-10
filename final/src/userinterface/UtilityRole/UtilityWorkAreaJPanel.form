@@ -28,8 +28,10 @@
                       <Component id="lblBillNumber" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="txtFindBillNumber" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnFind" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnAll" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="btnNewBill" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -51,11 +53,14 @@
                       <Component id="lblCompanyName" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblBillNumber" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="txtFindBillNumber" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btnFind" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="txtFindBillNumber" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnFind" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnAll" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="130" max="-2" attributes="0"/>
@@ -158,6 +163,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewBillActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAll">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="List All"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
