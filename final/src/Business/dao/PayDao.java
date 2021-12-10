@@ -6,6 +6,7 @@ package Business.dao;
 
 import Business.model.order.Order;
 import Business.model.order.PayMethod;
+import Business.model.user.CountVO;
 import Business.util.DBUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -44,6 +45,21 @@ public class PayDao {
 		try {
 			List<PayMethod> methods = (List<PayMethod>)queryRunner.query(connection, sql,new BeanListHandler(PayMethod.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
                         return  methods;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}       
+                return null;
+    }
+
+    public List<CountVO> getPie(String username) {
+        
+                 String sql = "SELECT r2.type,SUM(r1.fee) sum FROM orders r1 join user r2  ON  r2.username = r1.company_id where  r1.user_id = ? GROUP BY r2.type";
+                
+		Object[] params = {username};
+		try {
+			List<CountVO> pie = (List<CountVO>)queryRunner.query(connection, sql,new BeanListHandler(CountVO.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  pie;
                         
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -6,6 +6,7 @@ package Business.service;
 
 import Business.dao.PayDao;
 import Business.model.order.PayMethod;
+import Business.model.user.CountVO;
 import java.util.List;
 
 /**
@@ -22,6 +23,8 @@ public class PayService {
     public List<PayMethod> getNumberByMethod(String method,String username) {
         return  payDao.getNumberByMethod(method,username);
     }
-    
+    public List<CountVO> getPie(String username) {
+        return  payDao.getPie(username);
+    }
     
 }

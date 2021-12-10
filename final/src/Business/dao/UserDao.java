@@ -4,6 +4,7 @@
  */
 package Business.dao;
 
+import Business.model.user.CountVO;
 import Business.model.user.User;
 import Business.util.DBUtil;
 import java.sql.Connection;
@@ -192,6 +193,20 @@ public class UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
+                return null;
+    }
+
+    public List<CountVO> getOrganRation() {
+               String sql = "SELECT type,COUNT(type) sum FROM user where type != 'admin' and type != 'Customer' GROUP BY type ";
+                
+		Object[] params = {};
+		try {
+			List<CountVO> pie = (List<CountVO>)queryRunner.query(connection, sql,new BeanListHandler(CountVO.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  pie;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}       
                 return null;
     }
 }

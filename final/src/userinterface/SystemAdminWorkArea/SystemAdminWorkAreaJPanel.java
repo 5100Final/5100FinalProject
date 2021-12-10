@@ -6,7 +6,11 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.model.user.User;
+import Business.service.PayService;
+import Business.service.UserService;
+import Business.util.PieChartEx;
 import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -44,6 +48,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnPublicService = new javax.swing.JButton();
         btnCustomer = new javax.swing.JButton();
         btnManageBill = new javax.swing.JButton();
+        btnViewGraph = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("My Work Area -Adminstrative");
@@ -93,6 +98,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewGraph.setText("View Organization ratio");
+        btnViewGraph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewGraphActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,7 +123,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(btnTax, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnPublicService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnManageBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnManageBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewGraph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(lblWelcom)
@@ -143,7 +156,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnCustomer)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageBill)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnViewGraph)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,6 +212,18 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         splitPanel.setRightComponent(sp);
     }//GEN-LAST:event_btnManageBillActionPerformed
 
+    private void btnViewGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewGraphActionPerformed
+        // TODO add your handling code here:
+       
+       
+        
+        SwingUtilities.invokeLater(() -> {
+             UserService us = new UserService();
+            PieChartEx ex = new PieChartEx( us.getOrganRation());
+            ex.setVisible(true);
+        });
+    }//GEN-LAST:event_btnViewGraphActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCustomer;
@@ -205,6 +232,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnPublicService;
     private javax.swing.JButton btnTax;
     private javax.swing.JButton btnUtility;
+    private javax.swing.JButton btnViewGraph;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblValue;
     private javax.swing.JLabel lblWelcom;

@@ -4,9 +4,11 @@
  */
 package userinterface;
 
+import Business.util.BarChartEx;
 import Business.ConfigureASystem;
 import Business.model.user.User;
 import Business.model.user.UserType;
+import Business.service.PayService;
 import Business.util.DBUtil;
 
 import java.awt.CardLayout;
@@ -17,6 +19,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Business.service.UserService;
+import javax.swing.SwingUtilities;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -69,6 +72,7 @@ public class MainJFrame extends javax.swing.JFrame {
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
+        btnTest = new javax.swing.JButton();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +109,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnTest.setText("Register");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,7 +133,8 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addGap(26, 26, 26)
                             .addComponent(loginJLabel)))
                     .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTest, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,7 +156,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginJLabel)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegister)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnTest)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -230,6 +244,18 @@ public class MainJFrame extends javax.swing.JFrame {
                  jSplitPane1.setRightComponent(new RegisterUtilityJPanel());
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+        // TODO add your handling code here:
+        
+
+         
+//         SwingUtilities.invokeLater(() -> {
+//             PayService p = new PayService();
+//            BarChartEx ex = new BarChartEx(p.getPie("xxx1"));
+//            ex.setVisible(true);
+//        });
+    }//GEN-LAST:event_btnTestActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -266,6 +292,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnTest;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

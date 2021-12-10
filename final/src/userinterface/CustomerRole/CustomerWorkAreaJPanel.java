@@ -11,7 +11,9 @@ import Business.model.user.Customer;
 import Business.model.user.User;
 import Business.service.CustomerService;
 import Business.service.OrderService;
+import Business.service.PayService;
 import Business.service.UserService;
+import Business.util.BarChartEx;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
@@ -21,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import static userinterface.MainJFrame.infoBox;
 /**
@@ -125,6 +128,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         btnChangeInfo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        bntViewGraph = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(186, 194, 212));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -240,7 +244,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 bntPayBillActionPerformed(evt);
             }
         });
-        add(bntPayBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 110, 30));
+        add(bntPayBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 110, 30));
 
         btnChangeInfo.setText("Save Information");
         btnChangeInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +264,14 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("ex:08/09/2021");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 115, -1, 10));
+
+        bntViewGraph.setText("View Pay Graph");
+        bntViewGraph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntViewGraphActionPerformed(evt);
+            }
+        });
+        add(bntViewGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 120, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
@@ -337,9 +349,19 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         populateTable(os.getListByType("Tax",user.getUsername()));
     }//GEN-LAST:event_btnTaxActionPerformed
+
+    private void bntViewGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntViewGraphActionPerformed
+        // TODO add your handling code here:
+         SwingUtilities.invokeLater(() -> {
+            PayService p = new PayService();
+            BarChartEx ex = new BarChartEx(p.getPie(user.getUsername()));
+            ex.setVisible(true);
+        });
+    }//GEN-LAST:event_bntViewGraphActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntPayBill;
+    private javax.swing.JButton bntViewGraph;
     private javax.swing.JButton btnChangeInfo;
     private javax.swing.JButton btnMedical;
     private javax.swing.JButton btnPublicService;

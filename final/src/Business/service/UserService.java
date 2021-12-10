@@ -5,6 +5,7 @@
 package Business.service;
 
 import Business.dao.UserDao;
+import Business.model.user.CountVO;
 import Business.model.user.User;
 import java.util.List;
 
@@ -65,5 +66,9 @@ public class UserService {
 
     public String getTypeByName(String name) {
         return userDao.getTypeByName(name);
+    }
+
+    public List<CountVO> getOrganRation() {
+        return userDao.getOrganRation();
     }
 }
