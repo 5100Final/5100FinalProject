@@ -111,5 +111,20 @@ public class OrderDao {
                 return null;
     }
 
+    public Order getOrderById(String id) {
+       
+          String sql = "select * from orders where id = ? ";
+		Object[] params = {id};
+		try {
+			Order order = (Order)queryRunner.query(connection, sql,new BeanHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  order;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+ 
+    }
+
    
 }

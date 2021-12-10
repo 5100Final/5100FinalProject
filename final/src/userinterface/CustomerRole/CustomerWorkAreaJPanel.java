@@ -6,6 +6,7 @@ package userinterface.CustomerRole;
 
 
 import Business.model.order.Order;
+import Business.model.order.PayMethod;
 import Business.model.user.Customer;
 import Business.model.user.User;
 import Business.service.CustomerService;
@@ -56,8 +57,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
          Customer cus =  cs.getCusByName(user.getUsername());
          
          populateInformation(cus);
-         populateTable(os.getListByCus(user.getUsername()));
-                 
+         populateTable(os.getListByCus(user.getUsername()));       
     }
     public void populateInformation(Customer cus){
          SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
@@ -88,7 +88,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             row[3] = order.getFee();
             row[4] = order.getDdl();
             billModel.addRow(row);
-         }
+         }  
     } 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,6 +124,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         btnChangeInfo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(186, 194, 212));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -131,7 +132,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Name:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 80, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 30));
 
         customerName.setText("<value>");
         add(customerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 130, -1));
@@ -148,6 +149,12 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         lblBirthday.setText("Birthday:");
         add(lblBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        txtBirthday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBirthdayActionPerformed(evt);
+            }
+        });
         add(txtBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 160, -1));
 
         lblPhoneNumber.setText("Phone Number:");
@@ -208,7 +215,12 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         add(lblMore, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
 
         bntPayBill.setText("View and Pay");
-        add(bntPayBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 110, 20));
+        bntPayBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntPayBillActionPerformed(evt);
+            }
+        });
+        add(bntPayBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 110, 30));
 
         btnChangeInfo.setText("Save Information");
         btnChangeInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -216,13 +228,21 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 btnChangeInfoActionPerformed(evt);
             }
         });
-        add(btnChangeInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 190, 150, -1));
+        add(btnChangeInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 150, -1));
 
         jButton1.setText("Management Payment method");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, -1, -1));
 
         jLabel2.setText("ex:08/09/2021");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 115, -1, 10));
+
+        jButton2.setText("Manage supplier");
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
@@ -256,6 +276,29 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                          
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChangeInfoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CustomerPaymentMethodJPanel cp = new CustomerPaymentMethodJPanel(splitPanel,user);
+        splitPanel.setRightComponent(cp);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bntPayBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPayBillActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = tblRecentBill.getSelectedRow();
+        
+        if (selectedRow < 0){
+             infoBox("Select a row!!", "invalid");
+            return;
+        }
+        
+        CustomerPayBillJPanel cp = new CustomerPayBillJPanel(splitPanel,user,(String)tblRecentBill.getValueAt(selectedRow, 0));
+        splitPanel.setRightComponent(cp);
+    }//GEN-LAST:event_bntPayBillActionPerformed
+
+    private void txtBirthdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBirthdayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBirthdayActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntPayBill;
@@ -267,6 +310,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel customerName;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -19,7 +19,9 @@ public class OrderService {
     public  List<Order> getListById(String id) {
         return orderDao.getListByCompanyId(id);
     }
-   
+    public Order getOrderById(String id) {
+        return orderDao.getOrderById(id);
+    }
     
     public int addOrder(Order order) {
 	return orderDao.addOrder(order);

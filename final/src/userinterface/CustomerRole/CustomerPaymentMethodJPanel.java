@@ -4,6 +4,20 @@
  */
 package userinterface.CustomerRole;
 
+import Business.model.order.Order;
+import Business.model.order.PayMethod;
+import Business.model.user.Customer;
+import Business.model.user.User;
+import Business.service.CustomerService;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
+import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
+import static userinterface.MainJFrame.infoBox;
+
 /**
  *
  * @author Frank
@@ -13,9 +27,48 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CustomerPaymentMethod
      */
-    public CustomerPaymentMethodJPanel() {
+    private JSplitPane splitPanel;
+    private CustomerService cs;
+    private OrderService os;
+    private UserService us;
+    private User user;
+    private String method;
+    public CustomerPaymentMethodJPanel(JSplitPane splitPanel, User user) {
         initComponents();
+        this.splitPanel = splitPanel;
+        this.user = user;
+        this.cs = new CustomerService();
+        this.os = new OrderService();
+        this.us = new UserService();
+        
+         preWork(user);
+         
+        jComboBox1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {  
+                 if (e.getStateChange() == ItemEvent.SELECTED) {
+                     method = (String)e.getItem();
+                 }           
+            }   
+       });  
     }
+    public void populateTable(String name){
+        
+          List<PayMethod> list = cs.getPayListByName(name);
+          DefaultTableModel payModel = (DefaultTableModel) tblPaymentMethod.getModel();
+     
+          payModel.setRowCount(0);
+            
+          for(PayMethod method:list){
+            Object[] row = new Object[4];
+            row[0] = method.getId();
+            row[1] = method.getCardNumber();
+            row[2] = method.getMethod();
+            row[3] = method.getExpire();
+            payModel.addRow(row);
+         }
+          
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,34 +97,38 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
         jLabel1.setText("Manage Payment Method:");
 
         btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         tblPaymentMethod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Number", "Method", "Expiration  "
+                "ID", "Number", "Method", "Expiration  "
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tblPaymentMethod);
-        if (tblPaymentMethod.getColumnModel().getColumnCount() > 0) {
-            tblPaymentMethod.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
-        btnChange.setText("Change");
+        btnChange.setText("Save");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Method:");
 
@@ -79,9 +136,20 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Expiration:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select", "paypal", "credit card", "ali Pay" }));
+
+        txtAccountNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAccountNumberActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Create");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,10 +175,8 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtExpiration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(jButton1))))
+                                .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1)))))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
@@ -141,11 +207,74 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtExpiration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CustomerWorkAreaJPanel cw = new CustomerWorkAreaJPanel(splitPanel,user);
+        splitPanel.setRightComponent(cw);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAccountNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAccountNumberActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String number =  txtAccountNumber.getText();
+        String expir = txtExpiration.getText();
+        
+        if(cs.addMethod(user.getUsername(),method,number,expir)>0){
+              infoBox("Create pay method success!!", "Valid");
+              populateTable(user.getUsername());
+        }else{
+              infoBox("Create pay method fail!!", "invalid");
+        };
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = tblPaymentMethod.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        
+        PayMethod method = new PayMethod();
+        method.setId((Integer)tblPaymentMethod.getValueAt(selectedRow, 0)); 
+        method.setCardNumber((String)tblPaymentMethod.getValueAt(selectedRow, 1)); 
+        method.setMethod((String)tblPaymentMethod.getValueAt(selectedRow, 2));
+        method.setExpire((String)tblPaymentMethod.getValueAt(selectedRow, 3));
+        
+       if( cs.updateMethodById(method)>0){
+              infoBox("Modify pay method success!!", "Valid");
+              populateTable(user.getUsername());
+       }else{
+              infoBox("Modify pay method fail!!", "invalid");
+       };
+        
+    }//GEN-LAST:event_btnChangeActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblPaymentMethod.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        Integer id = (Integer)tblPaymentMethod.getValueAt(selectedRow, 0);
+        
+         if( cs.deletedById(id)>0){
+              infoBox("deleted pay method success!!", "Valid");
+        }else{
+              infoBox("deleted pay method fail!!", "invalid");
+        }
+         populateTable(user.getUsername());
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -163,4 +292,8 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAccountNumber;
     private javax.swing.JTextField txtExpiration;
     // End of variables declaration//GEN-END:variables
+
+    private void preWork(User user) {
+        populateTable(user.getUsername());
+    }
 }

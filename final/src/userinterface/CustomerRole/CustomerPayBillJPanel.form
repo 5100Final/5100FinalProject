@@ -82,13 +82,14 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtDepartmetn" linkSize="1" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtDepartment" linkSize="1" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                                       <Component id="txtFrom" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="68" pref="68" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="lblSelectPayment" max="32767" attributes="0"/>
                                       <Component id="cbxSelectPayment" max="32767" attributes="0"/>
+                                      <Component id="cbxSelectCard" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -113,7 +114,7 @@
               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDepartmetn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSelectPayment" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -126,6 +127,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblTotalAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTotalAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxSelectCard" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -157,7 +159,10 @@
         <Property name="text" type="java.lang.String" value="Department:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDepartmetn">
+    <Component class="javax.swing.JTextField" name="txtDepartment">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFrom">
       <Properties>
@@ -188,11 +193,8 @@
     <Component class="javax.swing.JComboBox" name="cbxSelectPayment">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="1">
+            <StringItem index="0" value="Select Payment"/>
           </StringArray>
         </Property>
       </Properties>
@@ -216,6 +218,18 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxSelectCard">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="Card Number"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

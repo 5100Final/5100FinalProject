@@ -103,6 +103,12 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
 
         lblCustomer.setText("Customer:");
 
+        cbxCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCustomerActionPerformed(evt);
+            }
+        });
+
         lblTotalAmount.setText("Total Amount:");
 
         jLabel1.setText("ex:08/09/2021");
@@ -189,6 +195,10 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
             infoBox("Create bill success!!", "Valid");
         };       
     }//GEN-LAST:event_btnCreateBillActionPerformed
+
+    private void cbxCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCustomerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

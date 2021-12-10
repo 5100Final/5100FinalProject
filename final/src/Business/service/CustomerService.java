@@ -5,7 +5,9 @@
 package Business.service;
 
 import Business.dao.CustomerDao;
+import Business.model.order.PayMethod;
 import Business.model.user.Customer;
+import java.util.List;
 
 /**
  *
@@ -24,5 +26,23 @@ public class CustomerService {
     public Customer getCusByName(String username) {
           return cusDao.getCusByName(username);
     }
-    
+
+    public int updateMethodByName(String username, String method, String number, String expir) {
+        return cusDao.updateMethodByName(username,method,number,expir);
+    }
+    public int addMethod(String username, String method, String number, String expir) {
+        return cusDao.addMethod(username,method,number,expir);
+    }
+
+    public List<PayMethod> getPayListByName(String username) {
+       return cusDao.getPayListByName(username);
+    }
+
+    public int updateMethodById(PayMethod method) {
+        return cusDao.updateMethodById(method);
+    }
+
+    public int deletedById(Integer id) {
+       return cusDao.deletedById(id);
+    }
 }
