@@ -5,6 +5,7 @@
 package userinterface.CustomerRole;
 
 
+import java.awt.*;
 import Business.model.order.Order;
 import Business.model.order.PayMethod;
 import Business.model.user.Customer;
@@ -16,11 +17,16 @@ import Business.service.UserService;
 import Business.util.BarChartEx;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
@@ -59,8 +65,20 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
          customerName.setText(user.getUsername());
          Customer cus =  cs.getCusByName(user.getUsername());
          
-         populateInformation(cus);
-         populateTable(os.getListByCus(user.getUsername()));       
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(cus.getPhoto()));
+            int width = 100;
+            int height = 100;
+            ImageIcon icon = new ImageIcon(img);
+            icon.setImage(icon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+            this.lblPhoto.setIcon(icon);
+        } catch (IOException e) {
+            infoBox("No Photo!", "Valid");
+        }
+
+        populateInformation(cus);
+        populateTable(os.getListByCus(user.getUsername()));       
     }
     public void populateInformation(Customer cus){
          SimpleDateFormat sdf =  new SimpleDateFormat( "MM/dd/yyyy" ); 
