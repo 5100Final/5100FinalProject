@@ -48,6 +48,11 @@ public class SystemAdminManageInformationJPanel extends javax.swing.JPanel {
 
         btnChange.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnChange.setText("Change");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
 
         btnBack.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnBack.setText("<<Back");
@@ -143,6 +148,10 @@ public class SystemAdminManageInformationJPanel extends javax.swing.JPanel {
                 .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChangeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

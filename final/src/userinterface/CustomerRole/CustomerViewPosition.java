@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package userinterface.CustomerRole;
+import java.io.File;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -24,7 +25,9 @@ public class CustomerViewPosition extends Application{
         WebView webView = new WebView();
 
         //webView.getEngine().load("http://www.openlayers.org/");
-        webView.getEngine().load("C:\\Users\\Frank\\Desktop\\Main.html");
+
+        File f = new File("‪C:\\Users\\Animal\\Desktop\\a.html");
+        webView.getEngine().load("www.google.com");
         
         VBox vBox = new VBox(webView);
         Scene scene = new Scene(vBox, 960, 600);

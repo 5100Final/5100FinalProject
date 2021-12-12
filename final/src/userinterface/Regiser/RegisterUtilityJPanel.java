@@ -302,7 +302,7 @@ public class RegisterUtilityJPanel extends javax.swing.JPanel {
         user.setType(type);
         user.setLocation("1");
         user.setCompanyId(111);
-        
+        user.setPhoto("src/photo/default.jpg");
         UserService us = new UserService();
         CustomerService cs = new CustomerService();
         boolean flag = us.addUser(user);

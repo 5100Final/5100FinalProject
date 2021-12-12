@@ -33,12 +33,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnCreateBill" pref="137" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtTotalAmount" alignment="0" pref="137" max="32767" attributes="0"/>
-                              <Component id="txtDueTime" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbxCustomer" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtTotalAmount" alignment="0" pref="137" max="32767" attributes="0"/>
+                          <Component id="txtDueTime" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbxCustomer" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
