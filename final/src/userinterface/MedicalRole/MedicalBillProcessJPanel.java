@@ -4,9 +4,14 @@
  */
 package userinterface.MedicalRole;
 
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -17,12 +22,29 @@ import javax.swing.JPanel;
 public class MedicalBillProcessJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
+     private JSplitPane splitPanel;
+    private OrderService orderService ;
+     private UserService userService ;
+    private User user;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
     public MedicalBillProcessJPanel(JPanel userProcessContainer) {
         initComponents();
+                 
+        this.splitPanel = splitPanel;
+        this.user = user;
+        orderService = new OrderService();
+        userService = new UserService();
         
+    }
+    private void preWork() {
+        UserService us = new UserService();
+        List<User> list = us.getCustomerList();
+        System.out.print(list.size());
+        for(User user:list){
+        
+        }
     }
 
     /**

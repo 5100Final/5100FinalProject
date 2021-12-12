@@ -32,6 +32,14 @@ public class TaxWorkAreaJPanel extends javax.swing.JPanel {
         userService = new UserService();
         
     }
+    private void preWork() {
+        UserService us = new UserService();
+        List<User> list = us.getCustomerList();
+        System.out.print(list.size());
+        for(User user:list){
+        
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
