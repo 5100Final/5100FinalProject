@@ -213,6 +213,7 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
         order.setCompanyId(user.getUsername());
         order.setUserId(cusName);
         order.setFee(fee);
+        order.setAddr(txtAddress.getText());
         order.setStatus("pending");
         if(os.addOrder(order)>0){
             infoBox("Create bill success!!", "Valid");

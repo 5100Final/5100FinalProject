@@ -156,4 +156,17 @@ public class OrderDao {
                 return null;
     }
 
+    public String getAddrById(String orderId) {
+          String sql = "select * from orders where id = ? ";
+		Object[] params = {orderId};
+		try {
+			Order order = (Order)queryRunner.query(connection, sql,new BeanHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  order.getAddr();
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
 }

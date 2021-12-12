@@ -20,4 +20,5 @@ public class Order {
     private String companyId;
     private String userId;
     private String status;
+    private String addr;
 }

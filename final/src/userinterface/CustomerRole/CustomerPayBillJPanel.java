@@ -44,6 +44,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
     private UserService us; 
     private PayService ps;
     private String method;
+    private String orderId;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -57,7 +58,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
         this.os = new OrderService();
         this.us = new UserService();
         this.ps = new PayService();
-
+         this.orderId = orderId;
         preWork(orderId);
         
         cbxSelectPayment.addItemListener(new ItemListener() {
@@ -327,6 +328,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
     private void btnViewPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPositionActionPerformed
         // TODO add your handling code here: try {
         String addr = "-71.0854323, 42.3474595";
+        //String addr = os.getAddrById(orderId);
         try{
           File myObj = new File("src/a.html");
           if (myObj.exists()) {
