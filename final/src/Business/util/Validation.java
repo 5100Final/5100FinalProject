@@ -12,21 +12,21 @@ import javax.swing.JOptionPane;
  */
 public class Validation {
  
-     private static boolean isValid(String s){
+     public static boolean isValid(String s){
         return s.matches("^[A-Za-z0-9]+$");
     }
-     private static boolean isValidString(String s){
+     public static boolean isValidString(String s){
         return s.matches("^[a-zA-Z]*$");
     }
-     private static boolean isValidInt(String s){
+     public static boolean isValidInt(String s){
         return s.matches("^[0-9]*$");
     }
      
-    private static boolean isValidName(String s){
+    public static boolean isValidName(String s){
       return false;
     }
     
-     private  static boolean isValidRole(String s){
+     public  static boolean isValidRole(String s){
          if(s.equals("Customer")||s.equals("Utility")||s.equals("Tax")||s.equals("Public")||s.equals("Medical")) return true;
          return false;
     }
