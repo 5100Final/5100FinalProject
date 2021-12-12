@@ -39,23 +39,37 @@ public class SystemAdminManageInformationJPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JTextField();
         lblValue = new javax.swing.JLabel();
 
+        txtName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        cbxType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        txtUserName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        btnChange.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnChange.setText("Change");
 
+        btnBack.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnBack.setText("<<Back");
 
-        lblTitle.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setText("Manage Information:");
 
+        lblName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblName.setText("Name:");
 
+        lblType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblType.setText("Type:");
 
+        lblUserName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblUserName.setText("User Name:");
 
+        lblPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblPassword.setText("Password:");
 
+        txtPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        lblValue.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblValue.setText("<Value>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -83,12 +97,9 @@ public class SystemAdminManageInformationJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnBack)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblTitle)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblTitle)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(169, 169, 169)
                                 .addComponent(lblName)
@@ -96,8 +107,11 @@ public class SystemAdminManageInformationJPanel extends javax.swing.JPanel {
                                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(226, 226, 226)
-                        .addComponent(btnChange)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                        .addComponent(btnChange))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(btnBack)))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +140,7 @@ public class SystemAdminManageInformationJPanel extends javax.swing.JPanel {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnChange)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

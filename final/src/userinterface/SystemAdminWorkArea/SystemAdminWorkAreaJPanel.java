@@ -53,6 +53,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("My Work Area -Adminstrative");
 
+        btnMedical.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnMedical.setText("Manage Medical Organization");
         btnMedical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +61,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnTax.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnTax.setText("Manage Tax Organization");
         btnTax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +69,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUtility.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnUtility.setText("Manage Utility Organization");
         btnUtility.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +80,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblWelcom.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblWelcom.setText("Welcome! Admin");
 
+        btnPublicService.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnPublicService.setText("Manage Public Service Organization");
         btnPublicService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +88,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCustomer.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCustomer.setText("Manage Customer");
         btnCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +96,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageBill.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnManageBill.setText("Manage Bills");
         btnManageBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +104,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewGraph.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnViewGraph.setText("View Organization ratio");
         btnViewGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
