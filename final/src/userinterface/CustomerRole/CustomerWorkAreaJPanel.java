@@ -15,6 +15,7 @@ import Business.service.OrderService;
 import Business.service.PayService;
 import Business.service.UserService;
 import Business.util.BarChartEx;
+import Business.util.Validation;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
@@ -353,7 +354,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
            cus.setEmail(txtEmail.getText());
            cus.setSsn(txtSSN.getText());
            
-           if(cs.updateCus(cus)>0){
+           if(check(cus)&&cs.updateCus(cus)>0){
                 infoBox("Save information success!!", "Valid");
             }else{
                  infoBox("Save information fail!!", "invalid");
@@ -477,4 +478,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtSSN;
     // End of variables declaration//GEN-END:variables
+
+    private boolean check(Customer cus) {
+        return Validation.isValid(cus.getAddr()) && Validation.isValidInt(cus.getSsn()) && Validation.isValidInt(cus.getPhone()) && cus.getEmail().contains("@") ;
+        
+    }
 }

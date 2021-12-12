@@ -366,32 +366,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
       }
         Application.launch(CustomerViewPosition.class);
     }//GEN-LAST:event_btnViewPositionActionPerformed
-// public void populateTable(List<Restaurant> list){
-//         
-//        DefaultTableModel priceModel = (DefaultTableModel) PriceTable.getModel();
-//     
-//        priceModel.setRowCount(0);
-//           
-//         for(Restaurant rest:list){
-//            Object[] row = new Object[4];
-//            
-//            List<Food> menu =  rest.getMenu();
-//              
-//            row[0] = rest.getName();
-//            row[1] = menu.get(0).getPrice();
-//            row[2] = menu.get(1).getPrice();
-//            
-//            try{
-//                if(menu.get(2)!=null) row[3] = menu.get(2).getPrice();
-//            }catch(Exception e){
-//                    System.out.print("长度未到");
-//            }
-//            
-//            priceModel.addRow(row);
-//         }
-//  
-//    }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPayment;
