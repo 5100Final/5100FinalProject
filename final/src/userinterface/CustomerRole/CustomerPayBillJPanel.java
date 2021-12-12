@@ -328,7 +328,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
         // TODO add your handling code here: try {
         String addr = "-71.0854323, 42.3474595";
         try{
-          File myObj = new File("filename.html");
+          File myObj = new File("src/a.html");
           if (myObj.exists()) {
               myObj.delete();
           }

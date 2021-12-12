@@ -67,17 +67,17 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
          customerName.setText(user.getUsername());
          Customer cus =  cs.getCusByName(user.getUsername());
          
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File(cus.getPhoto()));
-            int width = 100;
-            int height = 100;
-            ImageIcon icon = new ImageIcon(img);
-            icon.setImage(icon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
-            this.lblPhoto.setIcon(icon);
-        } catch (IOException e) {
-            infoBox("No Photo!", "Valid");
-        }
+//        BufferedImage img = null;
+//        try {
+//            img = ImageIO.read(new File(cus.getPhoto()));
+//            int width = 100;
+//            int height = 100;
+//            ImageIcon icon = new ImageIcon(img);
+//            icon.setImage(icon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+//            this.lblPhoto.setIcon(icon);
+//        } catch (IOException e) {
+//            infoBox("No Photo!", "Valid");
+//        }
 
         populateInformation(cus);
         populateTable(os.getListByCus(user.getUsername()));       
