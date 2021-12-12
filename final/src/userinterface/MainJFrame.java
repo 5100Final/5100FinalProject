@@ -19,7 +19,10 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Business.service.UserService;
+import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.Insets;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -47,7 +50,7 @@ public class MainJFrame extends javax.swing.JFrame {
 //    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
    
     public MainJFrame() {
-        
+
         initComponents();
         this.setSize(1680, 1050); 
         
@@ -72,11 +75,11 @@ public class MainJFrame extends javax.swing.JFrame {
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
-        btnTest = new javax.swing.JButton();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        loginJButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,10 +93,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("User Name");
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        logoutJButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,17 +108,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnRegister.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
-            }
-        });
-
-        btnTest.setText("Register");
-        btnTest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTestActionPerformed(evt);
             }
         });
 
@@ -122,19 +122,17 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(userNameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                            .addGap(26, 26, 26)
-                            .addComponent(loginJLabel)))
-                    .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTest, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(userNameJTextField)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(loginJLabel))
+                    .addComponent(loginJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,15 +148,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(loginJButton)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(logoutJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
                 .addComponent(loginJLabel)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegister)
-                .addGap(18, 18, 18)
-                .addComponent(btnTest)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -244,18 +240,6 @@ public class MainJFrame extends javax.swing.JFrame {
                  jSplitPane1.setRightComponent(new RegisterUtilityJPanel());
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
-        // TODO add your handling code here:
-        
-
-         
-//         SwingUtilities.invokeLater(() -> {
-//             PayService p = new PayService();
-//            BarChartEx ex = new BarChartEx(p.getPie("xxx1"));
-//            ex.setVisible(true);
-//        });
-    }//GEN-LAST:event_btnTestActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -265,22 +249,36 @@ public class MainJFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+        FlatDarkLaf.setup();
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel( new FlatDarkLaf() );
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
         }
+        UIManager.put( "Button.arc", 999 );
+        UIManager.put( "Component.arc", 999 );
+        UIManager.put( "ProgressBar.arc", 999 );
+        UIManager.put( "TextComponent.arc", 999 );
+        UIManager.put( "Component.arrowType", "triangle" );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "TabbedPane.showTabSeparators", true );
         //</editor-fold>
 
         /* Create and display the form */
@@ -292,7 +290,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnTest;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

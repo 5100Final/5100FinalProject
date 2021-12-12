@@ -86,6 +86,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnMedical">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Medical Organization"/>
       </Properties>
       <Events>
@@ -94,6 +97,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTax">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Tax Organization"/>
       </Properties>
       <Events>
@@ -102,6 +108,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUtility">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Utility Organization"/>
       </Properties>
       <Events>
@@ -120,6 +129,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPublicService">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Public Service Organization"/>
       </Properties>
       <Events>
@@ -128,6 +140,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCustomer">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Customer"/>
       </Properties>
       <Events>
@@ -136,6 +151,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnManageBill">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage Bills"/>
       </Properties>
       <Events>
@@ -144,6 +162,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnViewGraph">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="View Organization ratio"/>
       </Properties>
       <Events>

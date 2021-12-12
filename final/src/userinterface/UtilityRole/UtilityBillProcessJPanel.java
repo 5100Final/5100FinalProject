@@ -81,9 +81,15 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
         lblTotalAmount = new javax.swing.JLabel();
         txtTotalAmount = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
 
+        lblDueTime.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblDueTime.setText("Due Time:");
 
+        txtDueTime.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        btnCreateBill.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCreateBill.setText("Create Bill");
         btnCreateBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +97,7 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,20 +105,31 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblTitle.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setText("New Bill");
 
+        lblCustomer.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblCustomer.setText("Customer:");
 
+        cbxCustomer.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbxCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxCustomerActionPerformed(evt);
             }
         });
 
+        lblTotalAmount.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblTotalAmount.setText("Total Amount:");
 
+        txtTotalAmount.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("ex:08/09/2021");
+
+        lblAddress.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblAddress.setText("Address:");
+
+        txtAddress.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -123,22 +141,23 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle)
                     .addComponent(btnBack)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCreateBill)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblDueTime)
-                                        .addComponent(lblTotalAmount))
-                                    .addComponent(lblCustomer, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbxCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                    .addComponent(txtDueTime))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblDueTime)
+                                .addComponent(lblTotalAmount)
+                                .addComponent(lblAddress))
+                            .addComponent(lblCustomer, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCreateBill, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                .addComponent(txtDueTime)
+                                .addComponent(txtAddress)
+                                .addComponent(cbxCustomer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,8 +180,12 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
                     .addComponent(txtDueTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddress)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(btnCreateBill)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -206,10 +229,12 @@ public class UtilityBillProcessJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateBill;
     private javax.swing.JComboBox<String> cbxCustomer;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblCustomer;
     private javax.swing.JLabel lblDueTime;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTotalAmount;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtDueTime;
     private javax.swing.JTextField txtTotalAmount;
     // End of variables declaration//GEN-END:variables

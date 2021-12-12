@@ -96,6 +96,7 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Manage Payment Method:");
 
+        btnBack.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +104,7 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblPaymentMethod.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblPaymentMethod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -116,6 +118,7 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblPaymentMethod);
 
+        btnDelete.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +126,7 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnChange.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnChange.setText("Save");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,20 +134,28 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Method:");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Account Number:");
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Expiration:");
 
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select", "paypal", "credit card", "ali Pay" }));
 
+        txtAccountNumber.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAccountNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAccountNumberActionPerformed(evt);
             }
         });
 
+        txtExpiration.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setText("Create");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +221,7 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
                     .addComponent(txtExpiration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

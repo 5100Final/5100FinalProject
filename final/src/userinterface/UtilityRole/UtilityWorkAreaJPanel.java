@@ -53,11 +53,13 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
         btnNewBill = new javax.swing.JButton();
         btnAll = new javax.swing.JButton();
 
-        lblOrganization.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        lblOrganization.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblOrganization.setText("Public Service");
 
+        lblCompanyName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblCompanyName.setText("<value>");
 
+        tblBill.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblBill.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -86,6 +88,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblBill);
 
+        btnFind.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnFind.setText("Find");
         btnFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,14 +96,17 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtFindBillNumber.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtFindBillNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFindBillNumberActionPerformed(evt);
             }
         });
 
+        lblBillNumber.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblBillNumber.setText("Bill Number:");
 
+        btnNewBill.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnNewBill.setText("New Bill");
         btnNewBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +114,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAll.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnAll.setText("List All");
         btnAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,19 +133,23 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(lblOrganization)
                         .addGap(17, 17, 17)
                         .addComponent(lblCompanyName))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtFindBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAll))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnNewBill)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(txtFindBillNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAll))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnNewBill)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAll, btnFind});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -159,7 +170,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnNewBill)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
