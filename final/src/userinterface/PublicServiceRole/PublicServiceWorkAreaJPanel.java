@@ -4,17 +4,36 @@
  */
 package userinterface.PublicServiceRole;
 
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.util.Map;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Frank
  */
 public class PublicServiceWorkAreaJPanel extends javax.swing.JPanel {
-
+    private User user;
+    private String cusName;
+    private int cusId;
+    private Map<String,Integer> map;
+    OrderService os = new OrderService();
+    UserService us = new UserService();
+    private JSplitPane splitPanel;
+    private OrderService orderService ;
+     private UserService userService ;
     /**
      * Creates new form PublicServiceWorkAreaJPanel
      */
     public PublicServiceWorkAreaJPanel() {
         initComponents();
+         this.splitPanel = splitPanel;
+        this.user = user;
+        orderService = new OrderService();
+        userService = new UserService();
+        
     }
 
     /**

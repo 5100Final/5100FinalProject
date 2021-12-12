@@ -5,7 +5,9 @@
 package userinterface.MedicalRole;
 
 
+import Business.model.order.Order;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -33,41 +35,41 @@ public class MedicalRoleWorkAreaJPanel extends javax.swing.JPanel {
       
     }
     
-//    public void populateTable(){
-//        
-// 
-//        DefaultTableModel orderModel = (DefaultTableModel) JTableOrderList.getModel();
-//     
-//        orderModel.setRowCount(0);
-//           
-//        List<Order> list = ecosystem.getOrderDirectory().getOrderListByDeliver(ua.getUsername(), ecosystem.getOrderDirectory().getOrderList());
-//         
-//          for(Order order:list){
-//            Object[] row = new Object[4];
-//            row[0] = order.getOrderId();
-//            row[1] = order.getRestaurant();
-//            row[2] = order.getCustomer();
-//            row[3] = order.getStatus();
-//          
-//            orderModel.addRow(row);
-//         }
-//    }
-// public void populateTable(Order order){
-//        
-// 
-//        DefaultTableModel orderModel = (DefaultTableModel) JTableOrderList.getModel();
-//     
-//        orderModel.setRowCount(0);
-//           
-//            Object[] row = new Object[4];
-//            row[0] = order.getOrderId();
-//            row[1] = order.getRestaurant();
-//            row[2] = order.getCustomer();
-//            row[3] = order.getStatus();
-//          
-//            orderModel.addRow(row);
-//       
-//    }
+    public void populateTable(){
+        
+ 
+        DefaultTableModel orderModel = (DefaultTableModel) tblBill.getModel();
+     
+        orderModel.setRowCount(0);
+           
+        List<Order> list = new ArrayList<>();
+         
+          for(Order order:list){
+            Object[] row = new Object[4];
+            row[0] = order.getAddr();
+            row[1] = order.getCompanyId();
+            row[2] = order.getDdl();
+            row[3] = order.getStatus();
+          
+            orderModel.addRow(row);
+         }
+    }
+ public void populateTable(Order order){
+        
+ 
+        DefaultTableModel orderModel = (DefaultTableModel) JTableOrderList.getModel();
+     
+        orderModel.setRowCount(0);
+           
+            Object[] row = new Object[4];
+            row[0] = order.getOrderId();
+            row[1] = order.getRestaurant();
+            row[2] = order.getCustomer();
+            row[3] = order.getStatus();
+          
+            orderModel.addRow(row);
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
