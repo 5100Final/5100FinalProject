@@ -4,6 +4,12 @@
  */
 package userinterface.TaxRole;
 
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.util.List;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Frank
@@ -13,8 +19,18 @@ public class TaxWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TaxWorkAreaJPanel
      */
+      private JSplitPane splitPanel;
+    private OrderService orderService ;
+     private UserService userService ;
+    private User user;
     public TaxWorkAreaJPanel() {
         initComponents();
+          
+        this.splitPanel = splitPanel;
+        this.user = user;
+        orderService = new OrderService();
+        userService = new UserService();
+        
     }
 
     /**

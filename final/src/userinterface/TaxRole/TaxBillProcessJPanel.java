@@ -4,6 +4,11 @@
  */
 package userinterface.TaxRole;
 
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Frank
@@ -13,8 +18,17 @@ public class TaxBillProcessJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TaxBillProcessJPanel
      */
+    private JSplitPane splitPanel;
+    private OrderService orderService ;
+     private UserService userService ;
+    private User user;
     public TaxBillProcessJPanel() {
         initComponents();
+         
+        this.splitPanel = splitPanel;
+        this.user = user;
+        orderService = new OrderService();
+        userService = new UserService();
     }
 
     /**
