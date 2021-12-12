@@ -8,6 +8,7 @@ import Business.model.order.Order;
 import Business.model.user.User;
 import Business.service.OrderService;
 import Business.service.UserService;
+import Business.util.Validation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSplitPane;
@@ -175,7 +176,7 @@ public class UtilityWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        if(txtFindBillNumber.getText()!=null){
+        if(txtFindBillNumber.getText()!=null && Validation.isValidInt(txtFindBillNumber.getText())){
             List<Order> orders = new ArrayList<>();
             orders.add(orderService.getOrderById(txtFindBillNumber.getText()));
             populateTable(orders);

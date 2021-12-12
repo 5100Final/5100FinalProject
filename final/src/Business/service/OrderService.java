@@ -51,4 +51,8 @@ public class OrderService {
     public List<Order> getListByType(String type, String username) {
        return orderDao.getListByType(type,username);
     }
+
+    public String getAddrById(String orderId) {
+        return orderDao.getAddrById(orderId);
+    }
 }

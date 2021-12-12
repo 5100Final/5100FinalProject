@@ -71,4 +71,8 @@ public class UserService {
     public List<CountVO> getOrganRation() {
         return userDao.getOrganRation();
     }
+
+    public void updatePhoto(String path,String username) {
+       userDao.updatePhoto(path,username);
+    }
 }

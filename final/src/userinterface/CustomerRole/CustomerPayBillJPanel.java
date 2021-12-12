@@ -44,6 +44,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
     private UserService us; 
     private PayService ps;
     private String method;
+    private String orderId;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -57,7 +58,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
         this.os = new OrderService();
         this.us = new UserService();
         this.ps = new PayService();
-
+         this.orderId = orderId;
         preWork(orderId);
         
         cbxSelectPayment.addItemListener(new ItemListener() {
@@ -297,7 +298,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
                         .addComponent(cbxSelectPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cbxSelectCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBillNumber)
@@ -326,9 +327,11 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
 
     private void btnViewPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPositionActionPerformed
         // TODO add your handling code here: try {
-        String addr = "-71.0854323, 42.3474595";
+        //String addr = "-71.0854323, 42.3474595";
+        String addr = os.getAddrById(orderId);
+        System.out.println(addr);
         try{
-          File myObj = new File("filename.html");
+          File myObj = new File("src/a.html");
           if (myObj.exists()) {
               myObj.delete();
           }
@@ -364,32 +367,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
       }
         Application.launch(CustomerViewPosition.class);
     }//GEN-LAST:event_btnViewPositionActionPerformed
-// public void populateTable(List<Restaurant> list){
-//         
-//        DefaultTableModel priceModel = (DefaultTableModel) PriceTable.getModel();
-//     
-//        priceModel.setRowCount(0);
-//           
-//         for(Restaurant rest:list){
-//            Object[] row = new Object[4];
-//            
-//            List<Food> menu =  rest.getMenu();
-//              
-//            row[0] = rest.getName();
-//            row[1] = menu.get(0).getPrice();
-//            row[2] = menu.get(1).getPrice();
-//            
-//            try{
-//                if(menu.get(2)!=null) row[3] = menu.get(2).getPrice();
-//            }catch(Exception e){
-//                    System.out.print("长度未到");
-//            }
-//            
-//            priceModel.addRow(row);
-//         }
-//  
-//    }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPayment;

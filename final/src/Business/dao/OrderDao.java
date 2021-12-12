@@ -25,9 +25,9 @@ public class OrderDao {
      Connection connection = DBUtil.getConn();
      
       public int addOrder(Order order) {
-		String sql = "insert into orders(ddl,fee,company_id,user_id,status) values(?,?,?,?,?)";
+		String sql = "insert into orders(ddl,fee,company_id,user_id,status,addr) values(?,?,?,?,?,?)";
 		
-		Object[] params = {order.getDdl(),order.getFee(),order.getCompanyId(),order.getUserId(),order.getStatus()};
+		Object[] params = {order.getDdl(),order.getFee(),order.getCompanyId(),order.getUserId(),order.getStatus(),order.getAddr()};
 		
 		try { 
 			return queryRunner.update(connection, sql,params);
@@ -149,6 +149,19 @@ public class OrderDao {
 		try {
 			List<Order> orders = (List<Order>)queryRunner.query(connection, sql,new BeanListHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
                         return  orders == null ? null:orders;
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+                return null;
+    }
+
+    public String getAddrById(String orderId) {
+          String sql = "select * from orders where id = ? ";
+		Object[] params = {orderId};
+		try {
+			Order order = (Order)queryRunner.query(connection, sql,new BeanHandler(Order.class, new BasicRowProcessor(new GenerousBeanProcessor())),params);
+                        return  order.getAddr();
                         
 		} catch (SQLException e) {
 			e.printStackTrace();
