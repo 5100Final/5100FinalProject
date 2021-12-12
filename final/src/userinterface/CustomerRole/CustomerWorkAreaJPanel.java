@@ -205,7 +205,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         add(lblSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 40, -1));
 
         txtSSN.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 150, 20));
+        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 150, 30));
 
         lblPhoto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblPhoto.setText("Photo");
