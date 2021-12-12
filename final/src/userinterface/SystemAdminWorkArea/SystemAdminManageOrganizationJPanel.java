@@ -52,6 +52,7 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
 
+        btnChange.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnChange.setText("Change");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +60,7 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnNew.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnNew.setText("New");
 
         btnBack.setText("<<Back");
@@ -68,6 +70,7 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblUser.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,8 +92,10 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblUser);
 
+        lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setText("Medical,public,tax,util/customer");
 
+        btnDelete.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,21 +111,21 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnChange)
-                                .addGap(332, 332, 332)
-                                .addComponent(btnDelete))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnBack)
-                                    .addComponent(lblTitle))
-                                .addGap(260, 260, 260))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBack)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnChange)
+                                    .addGap(332, 332, 332)
+                                    .addComponent(btnDelete))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblTitle)
+                                    .addGap(260, 260, 260))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
+                        .addGap(208, 208, 208)
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +142,7 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
                     .addComponent(btnChange))
                 .addGap(18, 18, 18)
                 .addComponent(btnNew)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -209,4 +209,19 @@ public class UserDao {
 		}       
                 return null;
     }
+
+    public void updatePhoto(String path,String username) {
+         QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = "update user set photo = ? where username = ? ";
+		Object[] params = {path,username};      
+		try { 
+			queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+              
+    }
 }

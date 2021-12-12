@@ -45,4 +45,8 @@ public class CustomerService {
     public int deletedById(Integer id) {
        return cusDao.deletedById(id);
     }
+
+    public void updatePhoto(String path, String username) {
+        cusDao.updatePhoto(path,username);
+    }
 }
