@@ -26,7 +26,7 @@ public class Validation {
       return false;
     }
     
-     public  static boolean isValidRole(String s){
+     public  static boolean isValidType(String s){
          if(s.equals("Customer")||s.equals("Utility")||s.equals("Tax")||s.equals("Public")||s.equals("Medical")) return true;
          return false;
     }

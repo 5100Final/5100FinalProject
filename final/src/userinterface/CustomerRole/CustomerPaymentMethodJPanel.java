@@ -11,6 +11,7 @@ import Business.model.user.User;
 import Business.service.CustomerService;
 import Business.service.OrderService;
 import Business.service.UserService;
+import Business.util.Validation;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
@@ -239,6 +240,10 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String number =  txtAccountNumber.getText();
         String expir = txtExpiration.getText();
+        if(!Validation.isValidInt(number)){
+              infoBox("Data format wrong!!", "invalid");
+               return;
+        }
         
         if(cs.addMethod(user.getUsername(),method,number,expir)>0){
               infoBox("Create pay method success!!", "Valid");
@@ -307,5 +312,9 @@ public class CustomerPaymentMethodJPanel extends javax.swing.JPanel {
 
     private void preWork(User user) {
         populateTable(user.getUsername());
+    }
+
+    private boolean check() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

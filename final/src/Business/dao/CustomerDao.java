@@ -44,8 +44,8 @@ public class CustomerDao {
               QueryRunner queryRunner = new QueryRunner();
 		Connection connection = DBUtil.getConn();
 		
-		String sql = "update customer set birthday = ?,phone = ?,addr = ?,ssn = ?, email =?,photo =? where username = ? ";
-		Object[] params = {cus.getBirthday(),cus.getPhone(),cus.getAddr(),cus.getSsn(),cus.getEmail(),cus.getUsername(),cus.getPhoto()};      
+		String sql = "update customer set birthday = ?,phone = ?,addr = ?,ssn = ?, email =? where username = ? ";
+		Object[] params = {cus.getBirthday(),cus.getPhone(),cus.getAddr(),cus.getSsn(),cus.getEmail(),cus.getUsername()};      
 		try { 
 			return queryRunner.update(connection, sql,params);
                         

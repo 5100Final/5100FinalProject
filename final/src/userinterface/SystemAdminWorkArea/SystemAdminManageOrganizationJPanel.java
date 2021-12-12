@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.model.order.Order;
 import Business.model.user.User;
 import Business.service.UserService;
+import Business.util.Validation;
 import java.util.List;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
@@ -184,7 +185,7 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
         user.setRole((String)tblUser.getValueAt(selectedRow, 2));
         user.setPassword((String)tblUser.getValueAt(selectedRow, 3));
         
-        if( us.modifyUserByName(user)>0){
+        if(check(user)&& us.modifyUserByName(user)>0){
               infoBox("Modify user success!!", "Valid");
         }else{
              infoBox("Modify user fail!!", "invalid");
@@ -225,5 +226,9 @@ public class SystemAdminManageOrganizationJPanel extends javax.swing.JPanel {
 
             userModel.addRow(row);
          }
+    }
+
+    private boolean check(User user) {
+        return Validation.isValidType(user.getType()) && Validation.isValidString(user.getRole()); 
     }
 }
