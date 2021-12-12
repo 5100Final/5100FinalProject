@@ -6,9 +6,14 @@ package userinterface.MedicalRole;
 
 
 import Business.model.order.Order;
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +29,13 @@ public class MedicalRoleWorkAreaJPanel extends javax.swing.JPanel {
  
     private JSplitPane splitPanel;
     
+    
+    private User user;
+    private String cusName;
+    private int cusId;
+    private Map<String,Integer> map;
+     OrderService os = new OrderService();
+     UserService us = new UserService();
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
@@ -33,6 +45,9 @@ public class MedicalRoleWorkAreaJPanel extends javax.swing.JPanel {
         //this.userProcessContainer = userProcessContainer;
         this.splitPanel = jsplitPanel;
       
+        this.splitPanel = splitPanel;
+        this.user = user;
+        this.map = new HashMap<>();
     }
     
     public void populateTable(){
