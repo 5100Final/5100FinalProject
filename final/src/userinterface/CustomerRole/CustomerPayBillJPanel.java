@@ -298,7 +298,7 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
                         .addComponent(cbxSelectPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cbxSelectCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBillNumber)
@@ -327,8 +327,9 @@ public class CustomerPayBillJPanel extends javax.swing.JPanel {
 
     private void btnViewPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPositionActionPerformed
         // TODO add your handling code here: try {
-        String addr = "-71.0854323, 42.3474595";
-        //String addr = os.getAddrById(orderId);
+        //String addr = "-71.0854323, 42.3474595";
+        String addr = os.getAddrById(orderId);
+        System.out.println(addr);
         try{
           File myObj = new File("src/a.html");
           if (myObj.exists()) {
