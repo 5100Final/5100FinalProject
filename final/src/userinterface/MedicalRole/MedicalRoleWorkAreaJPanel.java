@@ -57,15 +57,15 @@ public class MedicalRoleWorkAreaJPanel extends javax.swing.JPanel {
  public void populateTable(Order order){
         
  
-        DefaultTableModel orderModel = (DefaultTableModel) JTableOrderList.getModel();
+        DefaultTableModel orderModel = (DefaultTableModel) tblBill.getModel();
      
         orderModel.setRowCount(0);
            
             Object[] row = new Object[4];
-            row[0] = order.getOrderId();
-            row[1] = order.getRestaurant();
-            row[2] = order.getCustomer();
-            row[3] = order.getStatus();
+             row[0] = order.getAddr();
+            row[1] = order.getCompanyId();
+            row[2] = order.getDdl();
+            row[3] = order.getStatus(); 
           
             orderModel.addRow(row);
        
