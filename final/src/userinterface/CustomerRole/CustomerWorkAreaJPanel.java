@@ -19,6 +19,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,6 +29,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -67,17 +69,17 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
          customerName.setText(user.getUsername());
          Customer cus =  cs.getCusByName(user.getUsername());
          
-//        BufferedImage img = null;
-//        try {
-//            img = ImageIO.read(new File(cus.getPhoto()));
-//            int width = 100;
-//            int height = 100;
-//            ImageIcon icon = new ImageIcon(img);
-//            icon.setImage(icon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
-//            this.lblPhoto.setIcon(icon);
-//        } catch (IOException e) {
-//            infoBox("No Photo!", "Valid");
-//        }
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(cus.getPhoto()));
+            int width = 100;
+            int height = 100;
+            ImageIcon icon = new ImageIcon(img);
+            icon.setImage(icon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+            this.lblPhoto.setIcon(icon);
+        } catch (IOException e) {
+            infoBox("No Photo!", "Valid");
+        }
 
         populateInformation(cus);
         populateTable(os.getListByCus(user.getUsername()));       
@@ -205,11 +207,10 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         add(lblSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 40, -1));
 
         txtSSN.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 150, 30));
+        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 150, 20));
 
         lblPhoto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblPhoto.setText("Photo");
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 160, 150));
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 160, 150));
 
         tblRecentBill.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblRecentBill.setModel(new javax.swing.table.DefaultTableModel(
@@ -416,15 +417,31 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhotoActionPerformed
         // TODO add your handling code here:
-        Customer cus =  cs.getCusByName(user.getUsername());
+       
         JFileChooser imgChooser = new JFileChooser();
         imgChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+ 
         imgChooser.showDialog(new JLabel(), "Chose");
         File file = imgChooser.getSelectedFile();
         String filepath = file.getPath();
         if(filepath.endsWith(".jpg") || filepath.endsWith(".png") || filepath.endsWith(".gif") ||
                 filepath.endsWith(".JPG") || filepath.endsWith(".PNG") || filepath.endsWith(".GIF")) {
-            cus.setPhoto(file.getPath());
+        
+            
+            cs.updatePhoto(file.getPath(),user.getUsername());
+            us.updatePhoto(file.getPath(),user.getUsername());
+            
+         BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(file.getPath()));
+            int width = 100;
+            int height = 100;
+            ImageIcon icon = new ImageIcon(img);
+            icon.setImage(icon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+            this.lblPhoto.setIcon(icon);
+        } catch (IOException e) {
+            infoBox("No Photo!", "Valid");
+        }
         }
         else{
             infoBox("Wrong File!","invalid");

@@ -27,9 +27,10 @@ public class CustomerDao {
      Connection connection = DBUtil.getConn();
      
      public void addCus(String name) {
-                String sql = "insert into customer(username) values(?)";
+                String sql = "insert into customer(username,photo) values(?,?)";
 		
-		Object[] params = {name};
+                String path = "src/photo/default.jpg";
+		Object[] params = {name,path‪};
 		
 		try { 
 			queryRunner.update(connection, sql,params);
@@ -43,8 +44,8 @@ public class CustomerDao {
               QueryRunner queryRunner = new QueryRunner();
 		Connection connection = DBUtil.getConn();
 		
-		String sql = "update customer set birthday = ?,phone = ?,addr = ?,ssn = ?, email =? where username = ? ";
-		Object[] params = {cus.getBirthday(),cus.getPhone(),cus.getAddr(),cus.getSsn(),cus.getEmail(),cus.getUsername()};      
+		String sql = "update customer set birthday = ?,phone = ?,addr = ?,ssn = ?, email =?,photo =? where username = ? ";
+		Object[] params = {cus.getBirthday(),cus.getPhone(),cus.getAddr(),cus.getSsn(),cus.getEmail(),cus.getUsername(),cus.getPhoto()};      
 		try { 
 			return queryRunner.update(connection, sql,params);
                         
@@ -139,6 +140,20 @@ public class CustomerDao {
 			e.printStackTrace();
 		} 
                 return 0;
+    }
+
+    public void updatePhoto(String path, String username) {
+         QueryRunner queryRunner = new QueryRunner();
+		Connection connection = DBUtil.getConn();
+		
+		String sql = "update customer set photo = ? where username = ? ";
+		Object[] params = {path,username};      
+		try { 
+			queryRunner.update(connection, sql,params);
+                        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
     }
     
 }
