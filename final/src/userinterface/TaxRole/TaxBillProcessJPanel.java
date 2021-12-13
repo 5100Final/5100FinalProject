@@ -32,12 +32,12 @@ public class TaxBillProcessJPanel extends javax.swing.JPanel {
         userService = new UserService();
     }
      private void preWork() {
-//        UserService us = new UserService();
-//        List<User> list = us.getCustomerList();
-//        System.out.print(list.size());
-//        for(User user:list){
-//        
-//        }
+        UserService us = new UserService();
+        List<User> list = us.getCustomerList();
+        System.out.print(list.size());
+        for(User user:list){
+        
+        }
     }
 
     /**
