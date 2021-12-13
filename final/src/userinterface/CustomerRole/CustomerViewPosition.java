@@ -20,11 +20,9 @@ public class CustomerViewPosition extends Application{
     }
 
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("JavaFX WebView Example");
+        primaryStage.setTitle("View order Position");
 
         WebView webView = new WebView();
-
-        //webView.getEngine().load("http://www.openlayers.org/");
 
         File f = new File("src/a.html");
         webView.getEngine().load(f.toURI().toString());
