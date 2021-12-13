@@ -14,9 +14,9 @@ import static javafx.application.Application.launch;
 public class CustomerWebView {
       public static void main(String[] args) {
        Application.launch(CustomerViewPosition.class);
-       System.out.print(args);
-       System.out.print(args);
-       System.out.print(args);
+       System.out.print(CustomerViewPosition.class);
+       System.out.print(CustomerViewPosition.class);
+       System.out.print(CustomerViewPosition.class);
        System.out.print(args);
        System.out.print(args);
     }
