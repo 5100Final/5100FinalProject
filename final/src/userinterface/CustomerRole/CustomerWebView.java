@@ -11,8 +11,9 @@ import static javafx.application.Application.launch;
  *
  * @author Animal
  */
-public class test {
+public class CustomerWebView {
       public static void main(String[] args) {
        Application.launch(CustomerViewPosition.class);
+       
     }
 }
