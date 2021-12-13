@@ -4,19 +4,44 @@
  */
 package userinterface.PublicServiceRole;
 
+import Business.model.user.User;
+import Business.service.OrderService;
+import Business.service.UserService;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Frank
  */
 public class PublicServiceBillProcessJPanel extends javax.swing.JPanel {
-
+ private JSplitPane splitPanel;
+    
+    private User user;
+    private String cusName;
+    private int cusId;
+    private Map<String,Integer> map;
+     OrderService os = new OrderService();
+     UserService us = new UserService();
     /**
      * Creates new form PublicServiceBillProcessJPanel
      */
     public PublicServiceBillProcessJPanel() {
+     
         initComponents();
+        this.splitPanel = splitPanel;
+        this.user = user;
+        os = new OrderService();
+        us = new UserService();
+        preWork();
     }
-
+ private void preWork() {
+        UserService us = new UserService();
+        List<User> list = us.getCustomerList();
+        System.out.print(list.size());
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
