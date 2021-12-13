@@ -26,10 +26,10 @@ public class TaxBillProcessJPanel extends javax.swing.JPanel {
     public TaxBillProcessJPanel() {
         initComponents();
          
-        this.splitPanel = splitPanel;
-        this.user = user;
-        orderService = new OrderService();
-        userService = new UserService();
+//        this.splitPanel = splitPanel;
+//        this.user = user;
+//        orderService = new OrderService();
+//        userService = new UserService();
     }
      private void preWork() {
         UserService us = new UserService();
