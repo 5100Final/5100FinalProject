@@ -26,8 +26,8 @@ public class CustomerViewPosition extends Application{
 
         //webView.getEngine().load("http://www.openlayers.org/");
 
-        File f = new File("‪C:\\Users\\Animal\\Desktop\\a.html");
-        webView.getEngine().load("www.google.com");
+        File f = new File("src/a.html");
+        webView.getEngine().load(f.toURI().toString());
         
         VBox vBox = new VBox(webView);
         Scene scene = new Scene(vBox, 960, 600);
